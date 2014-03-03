@@ -1,39 +1,47 @@
-confoo cleancode
-===============
-conférence sur le clean code en php, pourquoi c-cest important et comment le faire
+---
+layout: post
+title:  "Confoo cleancode"
+date:   2014-03-02 17:19:33
+categories: Conferences cleancode
+---
 
-La conférence est centré au tour de 4 livre, dont principalement Cleancode de 
-Robert Martin, un livre qui as eu beaucoup d-impacte sur ma vision du développement
+Au dernier Confoo j'ai vu la conférence de Adam Culp, une conférence sur le 
+cleancode en php, pourquoi c'est important et comment le faire.
+
+J'ai trouvé une autre captation
+[ video ](http://www.youtube.com/watch?v=Vs-9a1jewlA)
+de la même conférence et les
+[ slides ](http://fr.slideshare.net/adamculp/clean-application-development)
+
+Dans sa conférence Culp présente deux livres, Refactoring de Marting fowler et 
+Cleancode de Robert Martin. 
 
 ## cleane code ##
-Règle toujours laisser le code dans un meilleur état que tu l-as trouvé
 
-writing dirty code is easy in php
-if you having really bad code how easy is it to keep good programmer
+L'idée de base c'est que d'écrire du code lisible est vraiment important.
+Un développeur passe la majorité 80% son temps à lire du code. Il serais donc 
+logique de prendre le temps d'optimiser notre code pour que sa lecture soit rapide
 
+La règle de base de Martin est de toujours laisser le code dans un meilleur état
+qu'ons l'as trouvé. 
 
-clean code dont need any comments
+#### conséquences ###
+Écrire du code sale en php est facile, mais ça as des conséquences réelle sur l'entrprise
+Chaque fonctionnalité est plus longues à ajouter et coute plus cher.
+C'est tentant pour un employé de quitter son emploie.
+Il y as plus de risque de bug.
 
+### professionnalisme ###
+En tant que programmeur il faut agir comme des professionnel. C'est la 
+responsabilité du gestionnaire de projet de défendre le budget et l'échéancier
+mais c'est celle du programmeur de défendre le code. Il faut apprendre à dire non
+à la pression pour produire du meilleur code. Évidement il faut aussi apprendre 
+à communiquer nos raisons et à choisir nos batailles.
 
-il faut apprendre à dire non à la pression
-il faut être professionnel et apprendre à dire non
 lorsqu-on nous demande d-aller plus rapidement et que ça nous empeche de répondre
 aux bonnes pratique
 
-on ne peux pas dire tout le temps non, il faut apprendre à choisir nos batailles
-et apprendre à expliquer nos motivations
-
-notre job est de défendre le code, la job dun pm est de défendre les times line
-la notre est de défendre le code 
-
-
-
-
 le "je vais revenir plus tard pour le fixer" n-existe pas on ne reviens jamais
-
-quel est le résultat du dirty code
-
-chaque features est plus longues à ajouter, 
 
 dette technique, le résultat de "je vais revenir le fixer plus tard"
 on peut voir le développement comme une carte de crédit, si tu ne paye pas 
@@ -44,22 +52,21 @@ ta dette continue à grossir indéfiniment jusqu-à la faillite
 
 
 ### code smell ###
-c-est des indicateurs que du code n-est pas cleane
-généralement c-est que le programmeur ne suis pas les bonnes pratique
-si tu ne fait pas attentions à la consistance de ton code il y as 
-des chance que tu ne t-occupe pas de découpler tes compostante etc
+Les codesmell sont des indicateurs que le code n'est pas "clean", ils ne 
+constituent pas le problèmes principal mais démontrent que le programmeur
+ne respecte pas les bonne pratique. Si tu ne fait pas attentions à la 
+consistance de ton code il y as des chance que tu ne t-occupe pas de découpler 
+tes compostante etc
 
-indicateur : 
--inconsistance dans le naming convention
--inconsistant codign standard
--de longues fonciton...
--globals
--commentaires : il ne sert pas à palier à du mauvais code
-
-liens avec le concept de la fenetre brisé de pragmatic programmeur
-
+Quelques indicateurs : 
+- L'absance de convention de nom
+- Le non respect d'un standards de code
+- De longues fonciton
+- L'utilisation de variables globals
+- L'utilisation exessive de commentaires
 
 ### commentaires ###
+clean code dont need any comments
 peut servire à formater un fichier de code mais ne doit jamais servir
 à expliquer ce que le code fait, si tu ressent le besoin d-écrire un commentaire
 c-est que tu as de besoin de faire du refactoring
@@ -82,8 +89,6 @@ entrain de migrer vers le psr
 l-important c-est davoir une convention, on peut utiliser ceux de lindutrie
 limportant cest juste den avoir un
 
-on passe 80% de notre temps à lire du code... il faut donc optimiser le temps
-de lecture du code et non celui de lecture
 
 
 ### funciton ###
