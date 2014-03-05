@@ -2,7 +2,7 @@
 layout: post
 title:  "Conférence Confoo Montréal - BEHAT - Behaviour Driven Developpement"
 date:   2014-03-04 22:40:33
-categories: BDD PHP Confoo BEHAT
+categories: BDD PHP BEHAT
 ---
 Au dernier confoo j'ai assisté à la conférences de Thobias Schlitt sur le Behavior 
 Driven Developpent. Depuis quelques mois je m'intéresse à cette méthodologie et 
