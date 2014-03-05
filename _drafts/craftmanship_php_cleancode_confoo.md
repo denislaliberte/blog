@@ -1,16 +1,16 @@
 ---
 layout: post
-title:  "Confoo cleancode"
+title:  "Confoo montréal cleancode PHP"
 date:   2014-03-02 17:19:33
-categories: Conferences cleancode
+categories: Craftmanship Cleancode Confoo
 ---
 
 Au dernier Confoo j'ai vu la conférence de Adam Culp, une conférence sur le 
 cleancode en php, pourquoi c'est important et comment le faire.
 
-J'ai trouvé une autre captation
+J'ai trouvé une captation de cette présentation lors d'une autre conférence
 [ video ](http://www.youtube.com/watch?v=Vs-9a1jewlA)
-de la même conférence et les
+ et les
 [ slides ](http://fr.slideshare.net/adamculp/clean-application-development)
 
 Dans sa conférence Culp présente deux livres, Refactoring de Marting fowler et 

@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Conférence Confoo Montréal - BEHAT - Behaviour Driven Developpement"
-date:   2014-03-01 17:19:33
-categories: BDD PHP BEHAT
+date:   2014-03-04 22:40:33
+categories: BDD PHP Confoo BEHAT
 ---
 Au dernier confoo j'ai assisté à la conférences de Thobias Schlitt sur le Behavior 
 Driven Developpent. Depuis quelques mois je m'intéresse à cette méthodologie et 
@@ -13,26 +13,14 @@ conférence avec mes notes personnelle sur le sujet.
 Pour un résumé plus précis de la conférece voir les 
 [slides](http://qafoo.com/talks/14_02_confoo_behave_behavior_driven_development.pdf)
 
-- Gherkin un language non technique pour décrire les tests
-- Acceptace testing
-- Tests de non régression
-- Des sécifications exécutables
-- BDD et l'Intégration continue
-- Le vrais BDD et les tests d'interfaces
-- Mink, du faux bdd abordable
-    
-    
-********************************************************************************
-  
 ## Behaviours Driven Developpement 
-
 Le BDD est un outil de communication qui permet à une équipe multidisciplinaire 
 d'avoir un langage commun pour définir les fonctionnalités de l'application et 
 des tests automatisés sont généré à partir de ces descriptions de fonctionnalité,
 c'est un peu du Test Driven Développement collaboratif avec un focus sur la 
 création de "business value".
 
-## Gherkin un language non technique pour décrire les tests  ##
+### Gherkin un language non technique pour décrire les tests  ###
 
 En BDD on décrit les scénarios d'utilisation avec un langage formel qui est facile
 d'approche pour tout les membres non technique de l'équipe et les clients. Le 
@@ -54,7 +42,7 @@ un formulaire web:
 - **Then**  I shoud see a error message about the space in the mail
 - **And**  the submit button should be innactive
 
-## Acceptace testing ##
+### Acceptace testing ###
 
 Avoir un langage précis pour décrire les 'features' d'un système c'est intéressant 
 ce qui l'est encore plus c'est quand on peut générer des tests automatisé à partir
@@ -67,7 +55,7 @@ on évite de développer plus que ce que le client as demandé et de dépenser d
 budget sur des fonctionnalités qui sont moins prioritaires. On reste 
 continuellement focus sur les objectif d'affaire et sur les user stories du sprint.
 
-## tests de non régression ##
+### Tests de non régression ###
 
 Un autres avantage c'est que ces tests deviennent ensuite des tests de non 
 régression. Chaque nouveau développement peut briser n'importe quelles autres 
@@ -80,14 +68,14 @@ production. Les tests automatisé deviennent donc vraiment intéressants.
 Avec les tests automatisé en une commande on sait qu'on n'as pas introduit de bugs
 et sinon on sait exactement ou et on le sait au moment ou on introduit ce bug.
 
-## Des sécifications exécutables ##
+### Des sécifications exécutables ###
 
 Et en plus ces spécification ne sont jamais dépassées. À chaque fois qu'on 
 modifie le système on peut exécuter l'ensemble des tests et si on modifie une 
 fonctionnalité qui est documenté on sait immédiatement quel partie de la 
 documentation doit être modifiée.
 
-## intégration continue ##
+### Intégration continue ###
 
 En tant que développeurs on peut ignorer les tests ou oublier de les exécuter, à
 moins qu'on ajoute ces test à notre processus d'intégration continue. Par exemple 
@@ -104,7 +92,7 @@ de nos objets backend, mais dans le cas de projet de type CMS tester directement
 l'interface semble être une solution acceptable et surtout abordable pour la plus 
 part des scénarios.
 
-## Mink ##
+### Mink ###
 
 Mink est une extension de BEHAT qui offre une api pour commander des browsers de
 tests que ce soit des browser dit "headless" qui analyse seulement le html ou
@@ -116,7 +104,7 @@ Mink as une api qui offre une abstraction du http et du html. On peut demander
 une page, remplir un formulaire, l'envoyer et tester le résultats retourné en 
 quelques lignes de tests.
 
-## Ressources ##
+### Ressources ###
 
 - La librairie ruby Cucumber est le premier outils à implémenter les concepts du
 BDD  :
