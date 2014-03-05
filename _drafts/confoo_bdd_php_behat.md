@@ -1,14 +1,14 @@
 ---
 layout: post
-title:  "Conférence Confoo - BEHAT - Behaviour Driven Developpement"
+title:  "Conférence Confoo Montréal - BEHAT - Behaviour Driven Developpement"
 date:   2014-03-01 17:19:33
 categories: BDD PHP BEHAT
 ---
 Au dernier confoo j'ai assisté à la conférences de Thobias Schlitt sur le Behavior 
 Driven Developpent. Depuis quelques mois je m'intéresse à cette méthodologie et 
-à ces librairies Cucumber pour le ruby et Behat pour le php. Dans ce billet je 
-fait un mélange entre les notes que j'ai pris lors de la conférence avec mes 
-notes de recherches.
+au librairies qui y sont associé Cucumber pour le ruby et Behat pour le php. 
+Dans ce billet je fait un mélange entre les notes que j'ai pris lors de la 
+conférence avec mes notes personnelle sur le sujet.
 
 Pour un résumé plus précis de la conférece voir les 
 [slides](http://qafoo.com/talks/14_02_confoo_behave_behavior_driven_development.pdf)
@@ -29,11 +29,11 @@ Pour un résumé plus précis de la conférece voir les
 
 Le BDD c'est un peu une évolution du TDD, une pratique technique qui consiste 
 à créer des tests unitaire avant d'écrire le code, et c'est une pratique qui 
-concerne surtout les développeurs. Le BDD est un outil de communication qui 
-permet à une équipe multidisciplinaire  d'avoir un langage commun pour définir 
-les fonctionnalité de l'application et des tests automatisé sont généré à partir
-de ces descriptions de fonctionnalité, c'est un peu du TDD collaboratif avec un 
-focus sur la création de "business value".
+concerne surtout les développeurs. À l'opposé du TDD, le BDD est un outil de 
+communication qui permet à une équipe multidisciplinaire  d'avoir un langage 
+commun pour définir les fonctionnalités de l'application et des tests automatisé 
+sont généré à partir de ces descriptions de fonctionnalité, c'est un peu du TDD 
+collaboratif avec un focus sur la création de "business value".
 
 ## Gherkin un language non technique pour décrire les tests  ##
 
