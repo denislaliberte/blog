@@ -13,7 +13,6 @@ conférence avec mes notes personnelle sur le sujet.
 Pour un résumé plus précis de la conférece voir les 
 [slides](http://qafoo.com/talks/14_02_confoo_behave_behavior_driven_development.pdf)
 
-- Behaviours Driven Developpement vs Test Driven Developpement
 - Gherkin un language non technique pour décrire les tests
 - Acceptace testing
 - Tests de non régression
@@ -25,58 +24,50 @@ Pour un résumé plus précis de la conférece voir les
     
 ********************************************************************************
   
-## Behaviours Driven Developpement vs Test Driven Developpement ##
+## Behaviours Driven Developpement 
 
-Le BDD c'est un peu une évolution du TDD, une pratique technique qui consiste 
-à créer des tests unitaire avant d'écrire le code, et c'est une pratique qui 
-concerne surtout les développeurs. À l'opposé du TDD, le BDD est un outil de 
-communication qui permet à une équipe multidisciplinaire  d'avoir un langage 
-commun pour définir les fonctionnalités de l'application et des tests automatisé 
-sont généré à partir de ces descriptions de fonctionnalité, c'est un peu du TDD 
-collaboratif avec un focus sur la création de "business value".
+Le BDD est un outil de communication qui permet à une équipe multidisciplinaire 
+d'avoir un langage commun pour définir les fonctionnalités de l'application et 
+des tests automatisés sont généré à partir de ces descriptions de fonctionnalité,
+c'est un peu du Test Driven Développement collaboratif avec un focus sur la 
+création de "business value".
 
 ## Gherkin un language non technique pour décrire les tests  ##
 
 En BDD on décrit les scénarios d'utilisation avec un langage formel qui est facile
 d'approche pour tout les membres non technique de l'équipe et les clients. Le 
-langage contiens au maximum dix mot clés. On utilise surtout les termes Given, 
-When et Then et on peut aussi le traduire en français selon ce qui est le plus 
-approprié pour le client.
+language est vraiment simple, il comporte une dizaine de mot clé et on utilise 
+surtout les termes Given, When et Then. On peut aussi utiliser le gherkin en 
+français selon ce qui est le plus approprié pour le client.
 
 Exemple en français :
-- Attendu  *un état du système*
-- Quand  *je fait une action*
-- Alors  *je valide un résultat*
+
+- **Attendu** un état du système
+- **Quand**  je fait une action
+- **Alors**  je valide un résultat
 
 Voici un exemple de scénario qui décrit une validation d'un champ courriel dans 
 un formulaire web:
 
-- Given  *I am on the contact form page*
-- When  *I enter "mon email@gmail.com" in the email*
-- Then  *I shoud see a error message about the space in the mail*
-- And  *the submit button should be innactive*
-
-On pourrais arrêter ici et ce serais suffisant. Avoir une liste de tests claire
-pour décrire chacunes des user stories ce serais déjà un avancement face aux 
-liste de "vérifier que" et aux descriptions remplis de "bullet point". Une 
-situation ou on finis souvent par deviner ce qu'il faut développer et qui
-ne répond pas toujours au besoin d'affaire que le client avais en tête.
-
-Mais là ou le BDD deviens intéressant c'est quand on commence à générer des 
-tests automatisés à partir de ces scénarios pour servir de tests d'acceptation 
-et de tests de non régression.
+- **Given**  I am on the contact form page
+- **When**  I enter "mon email@gmail.com" in the email
+- **Then**  I shoud see a error message about the space in the mail
+- **And**  the submit button should be innactive
 
 ## Acceptace testing ##
 
-Un des avantages du BDD est qu'on génère des tests d'acceptation. On écris des
-tests qui vérifie la fonctionnalité demandés par le client avant d'implémenter 
-cette fonctionnalité. Une fois que ces tests sont écrit on travaille à faire 
-passer ce tests et uniquement à faire passer ce tests... donc on évite de 
-développer plus que ce que le client as demandé et de dépenser du budget sur 
-des fonctionnalités qui sont moins prioritaires. On reste continuellement focus
-sur les objectif d'affaire et les user stories du sprint.
+Avoir un langage précis pour décrire les 'features' d'un système c'est intéressant 
+ce qui l'est encore plus c'est quand on peut générer des tests automatisé à partir
+de ces spécification, ces tests deviennet des tests d'acceptation pour le sprint.
 
-## tests de non régression - spécification exécutable ##
+On écris des tests qui vérifie la fonctionnalité demandés par le client avant 
+d'implémenter cette fonctionnalité. Une fois que ces tests sont écrit on 
+travaille à faire passer ce tests et uniquement à faire passer ce tests... donc 
+on évite de développer plus que ce que le client as demandé et de dépenser du 
+budget sur des fonctionnalités qui sont moins prioritaires. On reste 
+continuellement focus sur les objectif d'affaire et sur les user stories du sprint.
+
+## tests de non régression ##
 
 Un autres avantage c'est que ces tests deviennent ensuite des tests de non 
 régression. Chaque nouveau développement peut briser n'importe quelles autres 
@@ -91,27 +82,27 @@ et sinon on sait exactement ou et on le sait au moment ou on introduit ce bug.
 
 ## Des sécifications exécutables ##
 
-L'avantage majeur de cette méthodologie c'est que ces spécification ne sont 
-jamais dépassées. À chaque fois qu'on modifie le système on peut exécuter 
-l'ensemble des tests et si on modifie une fonctionnalité qui est documenté on 
-sait immédiatement quel partie de la documentation doit être modifiée.
+Et en plus ces spécification ne sont jamais dépassées. À chaque fois qu'on 
+modifie le système on peut exécuter l'ensemble des tests et si on modifie une 
+fonctionnalité qui est documenté on sait immédiatement quel partie de la 
+documentation doit être modifiée.
 
 ## intégration continue ##
 
 En tant que développeurs on peut ignorer les tests ou oublier de les exécuter, à
-moins qu'on intègre ces test à notre processus d'intégration continue. Par exemple 
+moins qu'on ajoute ces test à notre processus d'intégration continue. Par exemple 
 le serveur Jenkins peut rouler les tests et rejeter les commits qui brisent les
 tests, donc même si un site est en ligne depuis des mois, on vas toujours avoir
 des spécifications claire du comportement attendu.
 
 ### Vrais BDD vs tests d'interfaces  ###
 
-Évidement tout ce que font les librairies de BDD c'est relier les "steps" du 
-scénario avec une fonciton qu'on doit implémenter. Si on suis une vision puriste
-du BDD il faudrais implémenter ces fonctions pour testers directement la logique
-d'affaire de nos objets backend, mais dans le cas de projet de type CMS tester
-directement l'interface semble être une solution acceptable et surtout abordable
-pour la plus part des scénarios.
+Tout ce que font les librairies de BDD c'est relier les "steps" du scénario a
+vec une fonciton qu'on doit implémenter. Si on suis une vision puriste du BDD il 
+faudrais implémenter ces fonctions pour tester directement la logique d'affaire
+de nos objets backend, mais dans le cas de projet de type CMS tester directement 
+l'interface semble être une solution acceptable et surtout abordable pour la plus 
+part des scénarios.
 
 ## Mink ##
 
@@ -122,8 +113,8 @@ vrais navigateurs, donc un tests peut s'exécuter sur tout les browser
 automatiquement.
 
 Mink as une api qui offre une abstraction du http et du html. On peut demander 
-une page, remplir un formulaire, l'envoyer et tests le résultats retourné en quelques
-lignes de tests.
+une page, remplir un formulaire, l'envoyer et tester le résultats retourné en 
+quelques lignes de tests.
 
 ## Ressources ##
 
