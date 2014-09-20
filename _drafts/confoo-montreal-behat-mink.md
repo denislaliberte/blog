@@ -83,6 +83,27 @@ le serveur Jenkins peut rouler les tests et rejeter les commits qui brisent les
 tests, donc même si un site est en ligne depuis des mois, on vas toujours avoir
 des spécifications claire du comportement attendu.
 
+### Vrais BDD vs tests d'interfaces  ###
+
+Tout ce que font les librairies de BDD c'est relier les "steps" du scénario a
+vec une fonciton qu'on doit implémenter. Si on suis une vision puriste du BDD il 
+faudrais implémenter ces fonctions pour tester directement la logique d'affaire
+de nos objets backend, mais dans le cas de projet de type CMS tester directement 
+l'interface semble être une solution acceptable et surtout abordable pour la plus 
+part des scénarios.
+
+### Mink ###
+
+Mink est une extension de BEHAT qui offre une api pour commander des browsers de
+tests que ce soit des browser dit "headless" qui analyse seulement le html ou
+des 'browser drivers' comme Selenium qui simule les actions des tests sur de 
+vrais navigateurs, donc un tests peut s'exécuter sur tout les browser 
+automatiquement.
+
+Mink as une api qui offre une abstraction du http et du html. On peut demander 
+une page, remplir un formulaire, l'envoyer et tester le résultats retourné en 
+quelques lignes de tests.
+
 ### Ressources ###
 
 - La librairie ruby Cucumber est le premier outils à implémenter les concepts du
