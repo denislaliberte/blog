@@ -2,8 +2,12 @@ Roadmap
 =======
 
 
-blog
-----
+blog / presentation
+-------------------
+- drupal camp montreal
+- drupal productivity
+- my drupal implementation pattern
+
 
 cv 
 --
@@ -29,14 +33,5 @@ lecture
 - code complete
 - regex
 - dsl
-
-présentation
------------
-- outils markdown
-- outils pour développement drupal productif
-- test drupal 7 
-  * adapter et mock object
-  * data sérialisation
-  * phpspec, phpunit et prophecy
 
 
