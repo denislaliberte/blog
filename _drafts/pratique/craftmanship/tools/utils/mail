@@ -1,0 +1,26 @@
+
+
+
+
+#utiliser kering et goobook pour storer le password 
+https://pypi.python.org/pypi/goobook/1.4alpha4
+
+si on ne met pas de mot de passe mutt prompt pour l'avoir
+aucuns besoin de laisser un mdp en clear text
+
+ça prend un folder ~/.mutt pour sauvegarder les certificat
+
+setter deux compte dans mutt
+http://pbrisbin.com/posts/two_accounts_in_mutt/
+
+
+http://en.wikipedia.org/wiki/List_of_email_clients#Text-based
+
+mutt
+http://www.maclife.com/article/columns/terminal_101_using_mutt_email_client
+http://apple.stackexchange.com/questions/44764/is-there-a-command-line-mail-program-for-mac
+
+vim dans mutt
+http://dev.mutt.org/trac/wiki/ConfigTricks
+
+

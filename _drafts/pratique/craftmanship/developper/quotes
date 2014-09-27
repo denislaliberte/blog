@@ -1,0 +1,8 @@
+I don't like MVC because that's not how the web works. Symfony2 is an HTTP framework; it is a Request/Response framework. That's the big deal. -F. Potencier
+http://fabien.potencier.org/article/49/what-is-symfony2
+ 
+
+clean code
+side effect are lies.
+Everithing is an object is a myth. Sometimes you really do want simple data 
+structures with procedure operating on them.

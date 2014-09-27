@@ -1,0 +1,21 @@
+{
+    "name": "denislaliberte/test",
+    "description": "test",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Denis Laliberté",
+            "email": "denis.laliberte@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "repositories":[
+        {
+            "type": "vcs",
+            "url": "https://github.com/denislaliberte/df"
+        }
+    ],
+    "require-dev": {
+        "denislaliberte/df": "1.0.0@dev"
+    }
+}

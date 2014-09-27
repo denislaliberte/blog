@@ -1,14 +1,29 @@
 Roadmap
 =======
 
-
 blog / presentation
 -------------------
 - drupal camp montreal
-- drupal productivity
-- ma vision du développement drupal 7
-
-
+- productivity
+  * drupal
+  * general
+- développement 
+  * drupal 7
+  * test et CI
+    - outils
+    - mock et data
+    - deploiement automatisé
+- methodologie
+  * pomodoro et développement iteratif
+    - estimation
+    - outils
+  * agile pure vs pragmatic et iteratif
+- bibliographie
+- markdown tool
+  * cv 
+  * site
+  * presentation
+  * documentation / wiki
 
 cv 
 --
@@ -32,7 +47,12 @@ installation
 lecture
 ------
 - code complete
-- regex
 - dsl
+- 7 language in 7 week
+- the practice of programming, Rob Pike
+- The Clean Coder, Bob Martin
+- Gang of four
+- agile estimating
+- regex
 
 

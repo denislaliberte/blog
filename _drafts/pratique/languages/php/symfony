@@ -1,0 +1,43 @@
+
+http://symfony.com/
+
+
+
+###
+dependecies injection
+###
+pimple
+http://pimple.sensiolabs.org/
+
+
+
+
+
+
+#####
+composer 
+#####
+https://getcomposer.org/
+
+
+## drupal 7
+
+#commande drush pour composer 
+#release condidate !!
+https://drupal.org/project/composer_manager
+
+
+## si j'ai bien compris... alors que autoload charge les fichier à la demande
+#ce module les ajoute tous au hook init ?!? 
+https://drupal.org/project/composer_autoload
+
+
+## 
+#
+#drupal 8
+#
+##
+
+## wrapper composer pour drush drupal 8
+https://drupal.org/project/composer
+  ##et liste de module qui intègre composer à drupal

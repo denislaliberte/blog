@@ -1,0 +1,24 @@
+
+http://www.phptherightway.com/pages/Functional-Programming.html
+
+
+-php functionnal programming-
+$result = array_map($callback($item),$array);
+array_reduce($array,$function($result,$item),$etat_initial);
+array_filter($array,$filter);
+bound variable, ajouter des parametres à la définition de la fonction
+my_function = function($param) use($param);
+require minimum php5.3
+
+
+#####
+# underscore
+####
+librairie fonctionnelle inspiré de laravel et underscore.js
+http://brianhaveri.github.io/Underscore.php/
+
+
+
+
+https://github.com/lstrojny/functional-php/blob/master/README.md
+http://bundles.laravel.com/bundle/underscore
