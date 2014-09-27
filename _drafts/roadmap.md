@@ -6,7 +6,8 @@ blog / presentation
 -------------------
 - drupal camp montreal
 - drupal productivity
-- my drupal implementation pattern
+- ma vision du développement drupal 7
+
 
 
 cv 
