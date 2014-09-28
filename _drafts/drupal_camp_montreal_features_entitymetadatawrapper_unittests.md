@@ -1,19 +1,15 @@
 ---
 layout: post
 title:  "Drupal camp Montréal - Docker, Twig, d2d migration"
-date:   2014-09-23 22:40:33
+date:   2014-09-28 22:40:33
 categories: Drupal conference
 ---
 
 - Modéliser ses features par use case vs par type de configuration
-- Faire un prototype "front end" ça permet de développer plus rapidement
 - Entity meta data wrapper c'est un incontournable
-- L'interface administrateur dans un cms c'est important
 
 Gérer la configuration de son site avec Features
 --------
-Je ne peux pas me passe de features... mais je le déteste...
-
 Features c'est indispensable pour exporter la configuration de drupal 7. Je sait
 que certains arrivent à tout configurer dans le code sans utiliser features et 
 j'ai étudié la possibilité mais pour l'instant la façon la plus productive pour
@@ -22,7 +18,7 @@ moi de travailler avec drupal 7 c'est features.
 J'avais vraiment hâte d'avoir le point de vue de Pierre Buyle sur l'utilisation 
 de features.
 
-J'ai souvent la même discussion avec d'autres dev sur features... comment on
+J'ai souvent la même discussion avec d'autres developpeur sur features... comment on
 sépare les features, une seul features pour tout le site c'est définitivement 
 ingérable, une features par use case ça peut être complexe et emporter des 
 conflits et souvent on finis par exporter une features par type de configuration

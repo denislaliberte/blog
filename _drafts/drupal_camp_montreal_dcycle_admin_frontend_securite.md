@@ -1,4 +1,7 @@
 
+- Faire un prototype "front end" ça permet de développer plus rapidement
+- L'interface administrateur dans un cms c'est important
+
 Les sessions que j'ai manqué
 ----------------------------
 
