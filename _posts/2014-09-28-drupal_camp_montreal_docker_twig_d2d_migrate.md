@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Drupal camp Montréal - Docker, Twig, d2d migration"
-date:   2014-03-04 22:40:33
-categories: Drupal, conference
+date:   2014-09-23 22:40:33
+categories: Drupal conference
 ---
 
 Voici un résumé de quelques conférences que j'ai vu au drupal camp montréal 2014.

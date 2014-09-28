@@ -1,3 +1,9 @@
+---
+layout: post
+title:  "Drupal camp Montréal - Docker, Twig, d2d migration"
+date:   2014-09-23 22:40:33
+categories: Drupal conference
+---
 
 - Modéliser ses features par use case vs par type de configuration
 - Faire un prototype "front end" ça permet de développer plus rapidement
