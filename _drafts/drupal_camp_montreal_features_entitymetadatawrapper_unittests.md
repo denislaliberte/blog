@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Drupal camp Montréal - features entityMetadataWrapper tests"
-date:   2014-09-28 22:40:33
+date:   2014-09-31 22:40:33
 categories: Drupal conference
 ---
 
@@ -12,8 +12,8 @@ Mon billet précédent les présentation sur  [Docker/sitediff, twig et et drupa
 ## tl;dr
 ```
 - Modéliser ses features par use case vs par type de configuration
-- Entity meta data wrapper c'est un incontournable
 - Une vision différente des tests automatisés
+- J'ai hâte que drupal 8 sorte pour utiliser twig
 ```
 
 
@@ -54,36 +54,6 @@ Je n'ai pas pu trouver les slides de la présentation mais il as mentoinné qu'u
 billet de blogue expliquant sa technique étais en préparation.
 
 
-Why Aren't You Using Entity Metadata Wrappers Yet?
-----------------------
-Au moment de sortir drupal 7 l'api des 'entity' n'étais pas complètes l'équipe as
-donc choisit de faire un module contribué qui offre un wrapper aux entité. C'est 
-vraiment un incontournable lorsqu'on doit aller chercher les valeurs d'une'node'
-programmatiquement. 
-
-François Xavier Lemieux de Coldfront Labs nous as donné une introduction sommaire 
-à l'api avec exemples de getter et setter je doit avouer que pour une séance 
-indentifié comme 'avancé' je m'attendais à en apprendre un peu plus sur les 
-opportunités de l'api.
-
-Voici un exemple inspiré de la [documentation officielle](https://www.drupal.org/documentation/entity-metadata-wrappers) 
-qui résume bien la démonstration
-
-```php
-<?php
-// sans entityMetadataWrapper
-  $value = $node->field_number[LANGUAGE_NONE][0]['value'] 
-
-// ...avec entity metadata wrapper (getter)
-  $wrapper = entity_metadata_wrapper('node', $node);
-  $value = $node_wrapper->field_number->value(); 
-  
-// exemple de setter
-  $node_wrapper->field_number->set(1); 
-
-//Pour avoir la liste des fields et autres propriétés d'une node
-  dpm($wrapper->getPropertyInfo());
-```
 
 Des tests modernes pour Drupal
 ------------------------------
@@ -118,3 +88,26 @@ l'intérieur de l'équipe.
 
 [les slides](http://fr.slideshare.net/hellosct1/des-testsmodernespourdrupal)
 
+Twig et drupal 8
+----------------
+
+![twig](/images/drupalcamp/twig.png)
+
+J'ai beaucoup aimé travailler avec twig sur des projets silex, et je doit avouer
+que je déteste vraiment comment fonctionne l'outil de templating de drupal 7.
+J'étais donc curieux de voir la conférence de Suzanne Dergacheva aussi de 
+Evolvingweb et de voir comment twig avais été intégré à drupal 8.
+
+La bonne nouvelle c'est qu'il n'y as pas de surprise, twig as été intégré 
+à drupal tel quel. Il y as simplement quelques fonction qui ont été intégré.
+
+On peut appeler la fonction t ``` { { variable | t} }``` et ils ont ajouté 
+une fonction pour cacher des éléments dans une node `{ { content | without links} }`
+et ils ont ajouté le block `{ {trans} } text à traduire { {endtrans} }` pour 
+les traductions.
+
+La conférencière nous as conseiller de voir la présentation de Fabien Potentier
+le créateur de twig au Drupalcon. 
+
+
+<iframe width="640" height="480" src="//www.youtube.com/embed/18sxjsLTesE?rel=0" frameborder="0" allowfullscreen></iframe>
