@@ -54,40 +54,6 @@ Je n'ai pas pu trouver les slides de la présentation mais il as mentoinné qu'u
 billet de blogue expliquant sa technique étais en préparation.
 
 
-
-Des tests modernes pour Drupal
-------------------------------
-
-![](/images/drupalcamp/phpunit.jpg)
-![](/images/drupalcamp/selenium.png)
-![](/images/drupalcamp/behat.png)
-
-Étant donné le titre de présentation je m'attendais à apprendre quelques trucs
-intéressant à intégrer à ma stratégie de tests pour drupal 7 mais le conférencier 
-avais une philosophie de tests assez loin de la mienne.
-
-Il nous as montré comment bootstraper drupal à l'intérieur de ses 'test unitaire'
-avec phpunit. Comment appeler les tests phpunit depuis des tests d'interface 
-généré par selenium HQ qui sert à automatiser des tests de navigateurs et il as
-fait un survol de Behat pour des 'acceptance tests' et nous as conseiller de faire
-rédiger ces tests par un gestionnaire de projet membre de l'équipe au lieu du client
-commanditaire du projet.
-
-Étant donné que ses exemples ne testais que des opération mathématique simple (1+1)
-on n'as pas su quel étais sa stratégie pour les données. On n'as pas su s'il 
-utilisait des fixture de database, un script sql ou l'api de drupal pour générer 
-son contenu de tests...
-
-Personnellement pour j'essaie d'isoler mes tests unitaires le plus possible donc
-aucuns besoins de bootstraper drupal dans phpunit, mes tests d'intégration tests 
-l'intégration de mon code avec les api externe donc aucun besoin de passer par un 
-navigateur ou sélénium et pour moi les tests d'acceptation c'est un outil de 
-communicaiton avec le comanditaire du projet ou un analiste mais je ne voie pas 
-vraiment l'utilité de faire rédiger ces tests par un gestionnaire de projet à 
-l'intérieur de l'équipe.
-
-[les slides](http://fr.slideshare.net/hellosct1/des-testsmodernespourdrupal)
-
 Twig et drupal 8
 ----------------
 
@@ -107,7 +73,23 @@ et ils ont ajouté le block `{ {trans} } text à traduire { {endtrans} }` pour
 les traductions.
 
 La conférencière nous as conseiller de voir la présentation de Fabien Potentier
-le créateur de twig au Drupalcon. 
+le créateur de twig au Drupalcon. (voir le lecteur en bas de page.)
+
+Les sessions que j'ai manqué
+---------------------------
+Brad Muncs et Matthieu Gadrat de Symétris ont fait une présentation sur la 
+personnalisation de l'interface administrateur, leur slides sont remplis d'exemple
+de code et d'idées intéressantes. Des tableau de bord et menus sur mesure, des 
+exemples d'action link, de tabs etc
+
+[Slideshare](http://fr.slideshare.net/Symetris/ppt-drupal-campmtl2014backendv01)
+
+Albert Albala de CGI as présenté la mise à jours de son workflow de déploiement automatisé
+par script d'update sans clonde de db pour Drupal 8. Sa démarche est expliqué en 
+détail sur ce blog post :
+
+[Dcycle project ](http://dcycleproject.org/blog/68/approach-code-driven-development-drupal-8)
+
 
 
 <iframe width="640" height="480" src="//www.youtube.com/embed/18sxjsLTesE?rel=0" frameborder="0" allowfullscreen></iframe>
