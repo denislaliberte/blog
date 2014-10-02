@@ -13,6 +13,7 @@ blog / presentation
     - outils
     - mock et data
     - deploiement automatisé
+  * module de prototypage
 - methodologie
   * pomodoro et développement iteratif
     - estimation
