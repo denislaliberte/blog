@@ -3,47 +3,41 @@ Roadmap
 
 blog / presentation
 -------------------
-- drupal camp montreal
-- productivity
-  * drupal
-  * general
+- outils
+  * composer
 - développement 
+  * module de prototypage
+  * function micro librairy
   * drupal 7
   * test et CI
     - outils
     - mock et data
     - deploiement automatisé
-  * module de prototypage
+- productivity
+  * drupal
+  * general
 - methodologie
   * pomodoro et développement iteratif
     - estimation
     - outils
   * agile pure vs pragmatic et iteratif
 - bibliographie
+- videographie 
 - markdown tool
   * cv 
   * site
   * presentation
   * documentation / wiki
-
-cv 
---
-- markdown template
-- add html to jekyll website
-- convert to doc with pandoc
-
-code
-----
-- Functional php
-- drupal library
-- test d'intégration drupal
-
-installation
-------------
-- php5
-- hhvm
+-hack
   * vagrant
-  * ubuntu
+  * ubuntu ou fedora
+  * hhvm
+- cv 
+  *  markdown template
+  *  add html to jekyll website
+  *  convert to doc with pandoc
+- Functional php
+
 
 lecture
 ------
