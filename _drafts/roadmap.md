@@ -1,17 +1,24 @@
 Roadmap
 =======
 
-blog / presentation
--------------------
+## current
+- outils
+  * composer
+- développement 
+  * module de prototypage
+  * function micro librairy
+  * drupal 7 api
+
+## queue
 - outils
   * composer
 - développement 
   * module de prototypage
   * function micro librairy
   * drupal 7
-  * test et CI
+* test et CI
     - outils
-    - mock et data
+    - Adapter mock et data
     - deploiement automatisé
 - productivity
   * drupal
