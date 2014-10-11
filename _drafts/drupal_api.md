@@ -24,16 +24,106 @@ réutilisation de code, à l'intérieur d'un projet, entre les projets
 Ford, accelerators p18
 "Graphical operating systems fovor convenience (and eye candy) over raw efficiency"
 
-### preprocess_node
-- EntityMetadataWrapper
-- file_create_url
-- breadcrumb
 
-## preprocess_page
-- menu_tree_page_data
+
+
+## introduction
+Dans ce billet je vais lister les hook et les fonction que j'utilise habituellement
+dans mes projets.
+
+contrainte graphique 
+
+## concept de base 
+### hook
+
+### templates 
+
+La technique est assez simple soit on override les fichier template et on utilise
+des hook_preprocess pour obtenir et traiter les variables ou on register un block 
+ou une route pour afficher du html custom
+
+##
+
+process habituel, presque routinier, 
+
+- analyse du template
+- configuration du backend (menu, content type )
+- override templates, block ou page
+- query the api to get variables
+- process and query to more variable
+- null check format variable array
+- pass to the templates
+
+
+
+## page
+
+Le template page.tpl.php est utilisé pour le layout général du site, le header 
+et le footer qui apparisse surtoutes les pages du site.
+
+On peut utiliser le hook_preprocess_page pour préparer les variables pour ce 
+template.
+
+### menus
+Je n'ai pas vu de site ou le menu par défaut de drupal convenais, généralement 
+le markup et les classe fournis ne conviennent pas au desing et à l'intéraction
+voulue.
+
+On peut utiliser la fonction menu_tree_page_data pour récupérer un array contenant
+les données du menu et les formater en fonction des classe custom dont on as de 
+besoin.
+
+- fonction pour les liens
+
+### Attibuts du menu
+Le module menu_attributes fournis de nouveaux champs dans l'admin pour ajouter 
+des images ou des classe aux items de menus 
+
+On peut utiliser la fonciton file_create_url pour réfupérer les url des images 
+ajouté par le module menu attibute
+
+### languages switcher
+En quelques lignes de code on peut avoir les donnés du language swicher.
+
 - language_negotiation_get_switch_links 
 - drupal_is_front_page
-- variables
+- l'objet global language permet de récupérer le langcode de la langue courant
+
+- code sample
+
+### variables
+Les variables de drupal sont des 
+
+- variable_set
+- variables module pour l'admin
+- realm var
+
+### templates 
+Je ne pense pas que ce soit une bonne idée de mettre
+
+On peut déclarer nos propres templates avec le hook_theme et ensuite on peut
+utiliser la fonction theme() pour récupérer les fonctions 
+
+### breadcrumb
+la fonction thème avec 
+
+### node
+
+Chaque field des nodes as son propre template donc si on doit controler précisément
+le html des node on doit overrider des dizaines de template et encore...
+
+En déclarant un hook_preprocess_node on peut récupérer les valeurs de la node
+et préparer un array de variable prêt à être afficher dans le templates
+node.tpl.php qu'on peut overrider par type de contenu avec le fichier nommé
+node--type.tpl.php
+
+
+
+
+- EntityMetadataWrapper
+null check
+
+
 
 https://api.drupal.org/api/drupal/includes%21entity.inc/class/EntityFieldQuery/7
 
@@ -141,6 +231,9 @@ Module à ne pas enabler en production
 - pathauto, pathologic
 
 
+autres
+drupa_get_path
+module_load_include
 
 
 

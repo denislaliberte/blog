@@ -2,16 +2,17 @@ Roadmap
 =======
 
 ## current
-- outils
-  * composer
 - développement 
+  * drupal 7 api
   * module de prototypage
   * function micro librairy
-  * drupal 7 api
+- outils
+  * composer
 
 ## queue
 - outils
   * composer
+  * composer in a gist
 - développement 
   * module de prototypage
   * function micro librairy
