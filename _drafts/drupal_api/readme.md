@@ -2,9 +2,15 @@ drupal api
 =========
 
 
-1
-2
-3
+1. Architecture par module
+2. Namespace
+3. Hook/Function
+
+
+
+
+
+
 
 Si on
 
@@ -12,14 +18,17 @@ YAGNIT
 Il ne faut pas faire les frameworks en avance il faut les extraires
 
 
-Durans mes 6 premiers mois j'ai expérimenter plusieurs avenue
-pour développer des sites plus axés sur l'api
+Au début de l'année j'ai commencé à utiliser drupal plus comme un framework
+plutôt que de le voir comme une application déjà construite que je n'avais 
+qu'à configurer.
+
 (overrengenieer, code complete)
 
-Et depuis stingray je commence à voir des patterns super simple qui se répète
-et naturellement j'ai certaine règles que je suis
-je vais en partager quelques unes avecvous on pourras voir s'il y 
-en as certaines de communes et certaines autres qu'on peut travailler ensemble
+L'api offre beaucoup de possibilité pour développer des solution custom.
+Dans un contexte ou on ne veux pas de solution préfabriqué et on veux
+une expérience utilisateur et design taillé sur mesure c'est vraiment une approche
+[qui facilitte la vie]
+
 
 Driver par l'interface graphique
 Outils et modules
