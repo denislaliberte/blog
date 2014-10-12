@@ -1,6 +1,40 @@
 drupal api
 =========
 
+
+1
+2
+3
+
+Si on
+
+YAGNIT
+Il ne faut pas faire les frameworks en avance il faut les extraires
+
+
+Durans mes 6 premiers mois j'ai expérimenter plusieurs avenue
+pour développer des sites plus axés sur l'api
+(overrengenieer, code complete)
+
+Et depuis stingray je commence à voir des patterns super simple qui se répète
+et naturellement j'ai certaine règles que je suis
+je vais en partager quelques unes avecvous on pourras voir s'il y 
+en as certaines de communes et certaines autres qu'on peut travailler ensemble
+
+Driver par l'interface graphique
+Outils et modules
+- focus 
+- one responsability
+Namespace et structure
+Api function et hook
+the drupal ways
+- embivalent
+- 
+
+
+
+
+
 ## code over configuration
  API Over Everything : The reason is because 3rd-party modules have assumptions that can lead to technical debt. Many times, budgets are blown because of the work you have to do to undo a default assumption.
 

@@ -2,6 +2,8 @@
 
 https://gist.github.com/denislaliberte/82e54bcce3d56767e1d3
 
+http://jeffkreeftmeijer.com/2011/microgems-five-minute-rubygems/
+
 ```bash 
 $ gist --help
 $ gist --login
@@ -31,6 +33,15 @@ $ git push
   ]
 }
 ```
+
+Pour créer un repo à partir d'un gist
+``` bash
+$git clone https://gist.github.com/82e54bcce3d56767e1d3.git test
+$ cd test
+$ git remote remove origin
+$ hub create testfastrepo
+```
+
 
 
 
