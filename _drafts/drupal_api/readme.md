@@ -1,12 +1,17 @@
-drupal api
-=========
+---
+layout: post
+title:  "Drupal api [titre de travail]"
+date:   2014-10-13 12:00:00
+categories: Drupal 
+---
+
 
 1. Code vs configuration
   - UI driven design 
   - approche itérative
 2. Combinaison hook / api funciton
   - layout
-  - page de contenu
+  - pages
   - listes de contenu
   - block
 3. Habitude / convention
@@ -14,92 +19,8 @@ drupal api
   - Namespace
   - features et dépendances
 
-## 1 Code vs Configuration
-
-Au début de l'année j'ai commencé à utiliser drupal plus comme un framework
-plutôt que de le voir comme une application déjà construite que je n'avais 
-qu'à configurer et les résultats sont assez intéressant.
-
-### solution custom
-Dans un context ou on peut faire des compromis sur le ui, ou on peut se satisfaire
-de du html que nous retourne drupal, dans un context ou tout est décidé d'avance 
-et on n'as pas la possibilité de changer d'idée.
-
-Configurer un site sans code avec seulement des modules de la communauté et une 
-configuration peut faire du sens.
-
-Mais avec mon équipe on ne travaille pas sur ce genre de projet. Nos clients
-ont des attentes graphique, on développe des sites qui s'adapte aux tablettes et
-mobile, on se soucie de l'accessibilité de nos sites, on développe nos projets 
-de façon itérative fonctionnalité par fonctionnalité et on accepte le fait qu'on
-ne peut pas tout savoir d'un projet avans de l'avoir développé donc on peut
-changer d'idée en cours de route. 
-
-Aussi on as pour objectif d'être productif, d'en donner le plus au client pour son
-budget que ce soit dans la phase initiale de développement du projet ou en support
-tout au long de la vie du site.
-
-Donc on veux réutiliser le plus possible ce qu'on développe et travailler de façon 
-uniforme, donc on veux pouvoir réutiliser du code entre les divers modules et
-entre les projets. 
-
-
-L'api offre beaucoup de possibilité pour développer des solution custom.
-Dans un contexte ou on ne veux pas de solution préfabriqué et on veux
-une expérience utilisateur et design taillé sur mesure c'est vraiment une approche
-[qui facilitte la vie]
-
-## Productivité
-
-Même s'il y as un effort initial à faire pour apprendre les apis, une fois que 
-c'Est fait on deviens vraiment plus productif.
-
-Une fois qu'on connais les block de base de l'api développer de nouvelle
-fonctionnalité est vraiment rapide. 
-
-Ce qui n'est pas vraiment le cas pour l'interface de configuration. Personnellement
-je n'arrive j'amais à me rappeler des options 
-
-##réutilisatyion
-On peut aussi réutiliser du code entre plusieurs module et entre les divers projets.
-
-## modification
-Les solutions configuré sont vraiment dure à modifier...
-
-dans un context itératif, ce n'Est vraiment pas l'idéal
-
-## maintiens, déclaration explicite
-
-
-
-Driver par l'interface graphique
-Outils et modules
-- focus 
-- one responsability
-Namespace et structure
-Api function et hook
-the drupal ways
-- embivalent
-- 
-
-
-## citation et ressources 
- API Over Everything : The reason is because 3rd-party modules have assumptions that can lead to technical debt. Many times, budgets are blown because of the work you have to do to undo a default assumption.
-
-http://www.phase2technology.com/blog/static-prototyping-and-keeping-drupal-simple-kds/
-
-// pragprog 
-- Don't use wizard code you don't understand p198
-- Don't programme by coincidence 172
-
-// martin fowler
-
-rich hickey simple vs easy
-
-Ford, accelerators p18
-"Graphical operating systems fovor convenience (and eye candy) over raw efficiency"
-
-// ressources pour apprendre l'api
+## 1 Code vs configuration 
+voir drupal_api/conde_configuration.md
 
 
 ## 2  Combinaison
@@ -108,14 +29,16 @@ Il y as certaines combinaison de hook et fonction qui reviennent continuellement
 J'évite le mot pattern car il est un peu sur-utilisé en développement et ce que 
 j'expose ici est plus près d'une habitude que d'un design pattern au sens formel.
 
+### process 
+Avec le développeur frontend on étudie les maquettes grahpique et on décide ensemble
+des variables et des templates dont on auras besoin pour rendre la maquette et
+les différentes déclinaison.
 
-### concept de base 
+Ensuite dépendant du cas soit je vais créer des page ou block custom ou je vais
+overrider des templates. Puis je vais utiliser les api pour récupérer les datas 
+et les formater en array.
 pour réviser les concept d'overrides de template et de hook [docuemtation]() 
 
-
-La technique est assez simple soit on override les fichier template et on utilise
-des hook_preprocess pour obtenir et traiter les variables ou on register un block 
-ou une route pour afficher du html custom
 
 process habituel, presque routinier, 
 
@@ -127,108 +50,10 @@ process habituel, presque routinier,
 - null check format variable array
 - pass to the templates
 
-
-## Layout
-
-
-Le template page.tpl.php est utilisé pour le layout général du site, le header 
-et le footer qui apparisse surtoutes les pages du site.
-
-On peut utiliser le hook_preprocess_page pour préparer les variables pour ce 
-template.
-
-### menus
-Je n'ai pas vu de site ou le menu par défaut de drupal convenais, généralement 
-le markup et les classe fournis ne conviennent pas au desing et à l'intéraction
-voulue.
-
-On peut utiliser la fonction menu_tree_page_data pour récupérer un array contenant
-les données du menu et les formater en fonction des classe custom dont on as de 
-besoin.
-
-- fonction pour les liens
-
-### Attibuts du menu
-Le module menu_attributes fournis de nouveaux champs dans l'admin pour ajouter 
-des images ou des classe aux items de menus 
-
-On peut utiliser la fonciton file_create_url pour réfupérer les url des images 
-ajouté par le module menu attibute
-
-### languages switcher
-En quelques lignes de code on peut avoir les donnés du language swicher.
-
-- language_negotiation_get_switch_links 
-- drupal_is_front_page
-- l'objet global language permet de récupérer le langcode de la langue courant
-
-- code sample
-
-### variables
-Les variables de drupal sont des 
-
-- variable_set
-- variables module pour l'admin
-- realm var
-
-### templates 
-Je ne pense pas que ce soit une bonne idée de mettre
-
-On peut déclarer nos propres templates avec le hook_theme et ensuite on peut
-utiliser la fonction theme() pour récupérer les fonctions 
-
-### breadcrumb
-la fonction thème avec 
-
-
-
-## Pages de contenu 
-
-
-### node
-
-Chaque field des nodes as son propre template donc si on doit controler précisément
-le html des node on doit overrider des dizaines de template et encore...
-
-En déclarant un hook_preprocess_node on peut récupérer les valeurs de la node
-et préparer un array de variable prêt à être afficher dans le templates
-node.tpl.php qu'on peut overrider par type de contenu avec le fichier nommé
-node--type.tpl.php
-
-
-
-
-- EntityMetadataWrapper
-null check
-
-https://api.drupal.org/api/drupal/includes%21entity.inc/class/EntityFieldQuery/7
-
+## project_layout.module
 
 ## listes de contenu
 
-
-## theme
-
-## menu 
-- callback
-- i18n_translate_path
-
-- EntityFieldQuery
-- node_load_multiple
-- pagination
-
-- drupal_render
-- node_view
-- node_view_multiple
-
-## block 
-- block_info 
-- block_view
-- menu_get_object
-  
-
-- taxonomy_get_tree
-- i18n_taxonomy_localize_terms
 
 
 ## modules
@@ -267,8 +92,6 @@ compliqué à s'y retrouver si on n'as qu'un script pour tout le projet
 utiliser le moins possible
 
 dés que je peux scripter quelque choses je le fait, variables, droits
-
-Kds se sert de features que pour exporter, puis fait l'import dans un hook_update
 
 ## convention de nom
 nom de module projet_
@@ -317,19 +140,47 @@ module_load_include
 
 
 
-## Conventions proposé
-  1 responsabilité par modules
-  templates custom minimal dans les modules
-  overrides des templates dans le thème
-  1 module (deploy ou integration ) responsable de construire le site
-  favoriser les apis vs la configuration
-  hook_menu, i18n, hook_block
-  La logique se retrouve toutes au niveau des modules, riens ou presque dans les 
-  templates
-  array de data dans les templates, entityMetadataWrapper
-  one line installer
-  favoriser les entityfieldquery vs les views
-  processing de menu
-  fichier de moins de 100 lignes de codes
+## convention
+  - 1 responsabilité par modules
+  - overrides des templates dans le thème
+  - 1 module (deploy ou integration ) responsable de construire le site
+  - favoriser les apis vs la configuration
+  - hook_menu, i18n, hook_block
+  - La logique se retrouve toutes au niveau des modules, riens ou presque dans les 
+  - templates
+  - array de data dans les templates, entityMetadataWrapper
+  - one line installer
+  - favoriser les entityfieldquery vs les views
+  - processing de menu
+  - fichier de moins de 100 lignes de codes
     - séparer les hook dans des includes
     - abstraction, classe library
+
+## citation et ressources 
+ API Over Everything : The reason is because 3rd-party modules have assumptions that can lead to technical debt. Many times, budgets are blown because of the work you have to do to undo a default assumption.
+
+http://www.phase2technology.com/blog/static-prototyping-and-keeping-drupal-simple-kds/
+
+// pragprog 
+- Don't use wizard code you don't understand p198
+- Don't programme by coincidence 172
+
+// martin fowler
+
+rich hickey simple vs easy
+
+Ford, accelerators p18
+"Graphical operating systems fovor convenience (and eye candy) over raw efficiency"
+
+// ressources pour apprendre l'api
+
+
+Driver par l'interface graphique
+Outils et modules
+- focus 
+- one responsability
+Namespace et structure
+Api function et hook
+the drupal ways
+- embivalent
+- 
