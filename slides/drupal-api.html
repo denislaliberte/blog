@@ -8,7 +8,7 @@ Check out [this remark slideshow](http://gnab.github.com/remark) for a brief int
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Composer</title>
+    <title>Drupal Api</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -28,24 +28,116 @@ Check out [this remark slideshow](http://gnab.github.com/remark) for a brief int
 
 class: center, middle
 
-# Composer, le genstionnaire de dépendance de la communauté php
+# Drupal api
+
 
 ---
+
+class: center, middle
 
 # Agenda
 
-1. Pourquoi
-2. page
-3. node
-4. block
-5. route
+- Layout
+- Pages
+- List
 
 ---
-
-##page
+# Layout
+- pages
+- partials
+- menu
+- language switcher
 
 ---
+#pages
+--
+- page.tpl.php
+- hook_preprocess_page
 
+# partial 
+--
+- hook_theme
+- theme
+
+---
+# menu
+--
+- menu_tree_page_data
+- url
+- menu_attributes
+
+---
+# language switcher
+--
+- language_negotiation_get_switch_links 
+- drupal_is_front_page
+
+
+
+---
+# Pages
+
+---
+node templates
+--
+- node--type.tpl.php
+- hook_preprocess_node
+
+---
+# Field Values
+--
+- Entity metadata wrapper
+
+
+---
+# Field module
+--
+- link et linkit
+- Date et carbon
+- Entity field collection
+- Taxonomie
+- i18n_taxonomy_localize_terms
+
+---
+# List
+
+---
+# routes
+- hook_menu
+- callback
+- i18n_translate_path
+
+---
+# query
+--
+- EntityFieldQuery
+- node_load_multiple
+- theme('pager')
+
+---
+## block 
+--
+- block_info 
+- block_view
+--
+- menu_get_object
+
+
+
+---
+# Intégration 
+--
+- Gestion des dépendances
+- Module d'intégration
+- Script d'installation
+
+---
+# Convention
+- namespace
+- Pas de logique dans les templates
+- Module avec le moins de responsabilité possible
+- Code over configuration
+- 
 
     </textarea>
     <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
