@@ -192,77 +192,170 @@ entity_metadata_wrapper()
 --
 ```php
   $wrapper = entity_metadata_wrapper('node', $node);
+```
+--
+```php
   $value = $node_wrapper->field_number->value(); 
-  
+```
+--
+```php
   $node_wrapper->field_number->set(1); 
-
 ```
 
 ---
 ## project_pages
-field_link
+
+```console
+$ drush dl link ; drush dl linkit
+```
+--
+```console
+$drush dl field_collection
+```
 
 --
 
-[drupal.org/project/link](https://www.drupal.org/project/link)
+```console
+$drush dl date
+```
+--
+
+et [briannesbitt/Carbon](https://github.com/briannesbitt/Carbon)
+
+<!-- todo : field module
+
+  ---
+  ## project_pages
+  field_link
+  
+  --
+  
+  [drupal.org/project/link](https://www.drupal.org/project/link)
+  
+  --
+  
+  [drupal.org/project/linkit](https://www.drupal.org/project/linkit)
+  
+  ---
+  class: center, middle
+  
+  ## project_pages
+  
+  ![linkit screen shot](/slides/drupal-api/linkit.png)
+  
+  ---
+  ## project_pages
+  
+  field_date
+  
+  ---
+  ## project_pages
+  
+  ---
+  - Date et carbon
+  - Entity field collection
+  - Taxonomie
+  - i18n_taxonomy_localize_terms
+  
+-->
+
+---
+# project_blog
+
+---
+## project_blog
+Exemple de module qui gère une liste de contenu... 
+--
+ça aurrais aussi pus être communiqué, offre d'emploie,
+manuel d'utilisation, commerce, produits etc
+
+---
+## project_blog
+node--blog.tpl.php
+
+hook_preprocess_node()
+
+...
+
+---
+## project_blog
+hook_menu
 
 --
 
-[drupal.org/project/linkit](https://www.drupal.org/project/linkit)
+project_blog_callback()
 
----
-class: center, middle
-
-## project_pages
-
-![linkit screen shot](/slides/drupal-api/linkit.png)
-
----
-- Date et carbon
-- Entity field collection
-- Taxonomie
-- i18n_taxonomy_localize_terms
-
----
-# List
-
----
-# routes
-- hook_menu
-- callback
-- i18n_translate_path
-
----
-# query
 --
-- EntityFieldQuery
-- node_load_multiple
-- theme('pager')
+
+i18n_translate_path
 
 ---
-## block 
---
-- block_info 
-- block_view
---
-- menu_get_object
+## project_blog
 
 
+ new EntityFieldQuery()
+
+--
+
+node_load_multiple()
+
+--
+
+theme('pager')
 
 ---
-# Intégration 
+## project_blog
+project_blog_block_info 
+
 --
-- Gestion des dépendances
-- Module d'intégration
-- Script d'installation
+
+project_blog_block_view
+
+--
+
+menu_get_object
 
 ---
-# Convention
-- namespace
-- Pas de logique dans les templates
-- Module avec le moins de responsabilité possible
-- Code over configuration
-- 
+## project_blog
+
+``` console
+$ drush dl features
+```
+
+--
+
+dependencies[] = project_blog_nodetype
+
+---
+## project_blog
+
+project_blog.install
+
+--
+```php
+project_blog_install_update_7001() {
+module_enable('project_blog_nodetype');
+```
+
+---
+## project_integration 
+
+--
+
+Gestion des dépendances
+
+--
+
+Script d'installation
+
+---
+## Convention
+
+namespace
+Pas de logique dans les templates
+Module avec le moins de responsabilité possible
+Code over configuration
+
 
     </textarea>
     <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
