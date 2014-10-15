@@ -1,6 +1,6 @@
 <!--
 # remark
-A simple, in-browser, markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+A simple, in-browser, markdown-driven slideshow tool targeted at people who know their way around HTML and CSS
 
 Check out [this remark slideshow](http://gnab.github.com/remark) for a brief introduction.
 
@@ -30,10 +30,19 @@ Check out [this remark slideshow](http://gnab.github.com/remark) for a brief int
         margin-top: 5px;
       }
       .remark-slide-content {
+        background-color: black;
+        color: white;
+
         font-size: 50px;
         padding: 30px;
       }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content a{
+        color: white;
+      }
+      .remark-code, .remark-inline-code { 
+        font-family: 'Ubuntu Mono';
+        font-size: 35px;
+      }
     </style>
   </head>
   <body>
@@ -44,16 +53,18 @@ class: center, middle
 # Drupal api
 
 ---
-
+class: center
 ## Agenda
 
-- Layout
-- Pages
-- List
+Layout
+
+Pages
+
+List
 
 ---
 
-# Layout
+# project_Layout
 
 ---
 
@@ -66,13 +77,19 @@ page.tpl.php
 
 hook_preprocess_page
 
+--
+
+```php
+print $project_layout_data['banner'];
+```
+
 ---
 ## project_layout
 
-Partials
+Partials...
 
 --
-(header, footer)
+header, footer, menu
 
 --
 
@@ -80,7 +97,9 @@ hook_theme
 
 --
 
-theme('theme_key', $vatiables)
+``` php
+$header = theme('header', $variables);
+```
 
 ---
 ## project_layout
@@ -100,7 +119,7 @@ Menus Attibutes
 
 --
 
-drupal.org/project/menu_attributes
+[drupal.org/project/menu_attributes](http://drupal.org/project/menu_attributes)
 
 --
 
@@ -112,33 +131,91 @@ Language switcher
 
 --
 
+language_negotiation_get_switch_links()
+
+--
+
+drupal_is_front_page()
+
+---
+## project_layout
+
 ``` php
 function getLanguageSwitcher(){
-      $path = drupal_is_front_page() ? '<front>' : $_GET['q'];
-      $switcher = language_negotiation_get_switch_links('language_url', $path);
-      return $switcher->links;
-  }
+  $path = drupal_is_front_page() ? '<front>' : $_GET['q'];
+    
+ $switcher = language_negotiation_get_switch_links(
+    'language_url', 
+    $path
+  );
+  return $switcher->links;
+}
 ```
 
 ---
-# Pages
+# project_pages
 
 ---
+## project_pages
+
+--
+
 node templates
+
 --
-- node--type.tpl.php
-- hook_preprocess_node
+
+node--type.tpl.php
+
+--
+
+hook_preprocess_node
 
 ---
-# Field Values
---
-- Entity metadata wrapper
+##project_pages 
+Field Values
 
+--
+
+[drupal.org/project/entity](https://www.drupal.org/project/entity)
+
+--
+
+entity_metadata_wrapper()
 
 ---
-# Field module
+
+##project_pages
+
+```php
+  $value = $node->field_number[LANGUAGE_NONE][0]['value'] 
+```
 --
-- link et linkit
+```php
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $value = $node_wrapper->field_number->value(); 
+  
+  $node_wrapper->field_number->set(1); 
+
+```
+
+---
+## project_pages
+field_link
+
+--
+
+[drupal.org/project/link](https://www.drupal.org/project/link)
+
+--
+
+[drupal.org/project/linkit](https://www.drupal.org/project/linkit)
+
+---
+## project_pages
+
+![linkit screen shot](/slides/drupal-api/linkit.png)
+
+---
 - Date et carbon
 - Entity field collection
 - Taxonomie
@@ -189,7 +266,7 @@ node templates
     <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
     </script>
     <script type="text/javascript">
-      var slideshow = remark.create();
+      var slideshow = remark.create({ ratio:'16:9'});
     </script>
   </body>
 </html>
