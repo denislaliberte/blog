@@ -1,0 +1,195 @@
+<!--
+# remark
+A simple, in-browser, markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+Check out [this remark slideshow](http://gnab.github.com/remark) for a brief introduction.
+
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drupal Api</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+        font-size: 100px;
+      }
+      .remark-slide-content h1 {
+        font-size: 250px;
+      }
+      .remark-slide-content h2, h3 {
+        font-size: 120px;
+        margin-bottom: 10px;
+        margin-top: 5px;
+      }
+      .remark-slide-content {
+        font-size: 50px;
+        padding: 30px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Drupal api
+
+---
+
+## Agenda
+
+- Layout
+- Pages
+- List
+
+---
+
+# Layout
+
+---
+
+## project_layout
+
+--
+page.tpl.php
+
+--
+
+hook_preprocess_page
+
+---
+## project_layout
+
+Partials
+
+--
+(header, footer)
+
+--
+
+hook_theme
+
+--
+
+theme('theme_key', $vatiables)
+
+---
+## project_layout
+Menu
+
+--
+
+menu_tree_page_data()
+
+--
+
+url()
+
+---
+## project_layout
+Menus Attibutes
+
+--
+
+drupal.org/project/menu_attributes
+
+--
+
+file_create_url($uri)
+
+---
+## project_layout
+Language switcher
+
+--
+
+``` php
+function getLanguageSwitcher(){
+      $path = drupal_is_front_page() ? '<front>' : $_GET['q'];
+      $switcher = language_negotiation_get_switch_links('language_url', $path);
+      return $switcher->links;
+  }
+```
+
+---
+# Pages
+
+---
+node templates
+--
+- node--type.tpl.php
+- hook_preprocess_node
+
+---
+# Field Values
+--
+- Entity metadata wrapper
+
+
+---
+# Field module
+--
+- link et linkit
+- Date et carbon
+- Entity field collection
+- Taxonomie
+- i18n_taxonomy_localize_terms
+
+---
+# List
+
+---
+# routes
+- hook_menu
+- callback
+- i18n_translate_path
+
+---
+# query
+--
+- EntityFieldQuery
+- node_load_multiple
+- theme('pager')
+
+---
+## block 
+--
+- block_info 
+- block_view
+--
+- menu_get_object
+
+
+
+---
+# Intégration 
+--
+- Gestion des dépendances
+- Module d'intégration
+- Script d'installation
+
+---
+# Convention
+- namespace
+- Pas de logique dans les templates
+- Module avec le moins de responsabilité possible
+- Code over configuration
+- 
+
+    </textarea>
+    <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

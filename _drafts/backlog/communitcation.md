@@ -1,5 +1,27 @@
 ## communication
 
+
+## blog
+technical bloging
+gihub pages
+jekyll
+content first
+
+## praticla learning
+
+On apprend plus quelque choses si on prévoit l'enseigner
+
+## talk
+remarkjs
+zach holamn talk
+presentation pattern de neal ford
+
+## code communication
+example et specbdd
+
+
+
+
 https://delicious.com/denislaliberte/communication
 
 Communication asynchrone 
