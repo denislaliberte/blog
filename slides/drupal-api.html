@@ -19,6 +19,19 @@ Check out [this remark slideshow](http://gnab.github.com/remark) for a brief int
       h1, h2, h3 {
         font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
+        font-size: 100px;
+      }
+      .remark-slide-content h1 {
+        font-size: 250px;
+      }
+      .remark-slide-content h2, h3 {
+        font-size: 120px;
+        margin-bottom: 10px;
+        margin-top: 5px;
+      }
+      .remark-slide-content {
+        font-size: 50px;
+        padding: 30px;
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
     </style>
@@ -30,49 +43,82 @@ class: center, middle
 
 # Drupal api
 
-
 ---
 
-class: center, middle
-
-# Agenda
+## Agenda
 
 - Layout
 - Pages
 - List
 
 ---
+
 # Layout
-- pages
-- partials
-- menu
-- language switcher
 
 ---
-#pages
---
-- page.tpl.php
-- hook_preprocess_page
 
-# partial 
+## project_layout
+
 --
-- hook_theme
-- theme
+page.tpl.php
+
+--
+
+hook_preprocess_page
 
 ---
-# menu
+## project_layout
+
+Partials
+
 --
-- menu_tree_page_data
-- url
-- menu_attributes
+(header, footer)
+
+--
+
+hook_theme
+
+--
+
+theme('theme_key', $vatiables)
 
 ---
-# language switcher
+## project_layout
+Menu
+
 --
-- language_negotiation_get_switch_links 
-- drupal_is_front_page
 
+menu_tree_page_data()
 
+--
+
+url()
+
+---
+## project_layout
+Menus Attibutes
+
+--
+
+drupal.org/project/menu_attributes
+
+--
+
+file_create_url($uri)
+
+---
+## project_layout
+Language switcher
+
+--
+
+``` php
+function getLanguageSwitcher(){
+      $path = drupal_is_front_page() ? '<front>' : $_GET['q'];
+      $switcher = language_negotiation_get_switch_links('language_url', $path);
+      return $switcher->links;
+  }
+```
 
 ---
 # Pages
