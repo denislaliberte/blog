@@ -23,8 +23,15 @@ Check out [this remark slideshow](http://gnab.github.com/remark) for a brief int
       }
       .remark-slide-content h1 {
         font-size: 250px;
+        padding-top: 30px;
+        margin-top: 5px
       }
-      .remark-slide-content h2, h3 {
+      .remark-slide-content h2 {
+        font-size: 120px;
+        margin-bottom: 10px;
+        margin-top: 5px;
+      }
+      .remark-slide-content h3 {
         font-size: 120px;
         margin-bottom: 10px;
         margin-top: 5px;
@@ -48,19 +55,57 @@ Check out [this remark slideshow](http://gnab.github.com/remark) for a brief int
   <body>
     <textarea id="source">
 
-class: center, middle
 
-# Drupal api
+class: center, middle
+name: kds
+# Keep Drupal Simple
+
+---
+##sources
+30 DRUPAL 8 API FUNCTIONS YOU SHOULD ALREADY KNOW
+
+-Fredric Mitchell, Phase 2
+
+[bit.ly/d8-api](https://bit.ly/d8-api)
+
+
+---
+##sources
+Static Prototyping and Keeping Drupal Simple (KDS)
+
+-Fredric Mitchell, Phase 2
+
+ [bit.ly/k-d-s](https://bitly.com/)
+
+---
+## Concept de base
+
+fichiers `.tpl.php`
+
+--
+
+Override de hook...
+--
+ exemple hook_init
+
+```php
+
+function project_init() {
+  print "hello world";
+}
+```
+
 
 ---
 class: center
-## Agenda
+name: agenda
+## Exemple project
 
-Layout
+project_Layout
 
-Pages
+project_pages
 
-List
+project_blog
 
 ---
 
@@ -70,7 +115,6 @@ List
 
 ## project_layout
 
---
 page.tpl.php
 
 --
@@ -103,7 +147,7 @@ $header = theme('header', $variables);
 
 ---
 ## project_layout
-Menu
+Menu custom
 
 --
 
@@ -115,11 +159,14 @@ url()
 
 ---
 ## project_layout
-Menus Attibutes
 
+Menu avec images et classes... 
 --
+menu_attributes
 
-[drupal.org/project/menu_attributes](http://drupal.org/project/menu_attributes)
+```console
+$ drush dl menu_attributes
+```
 
 --
 
@@ -153,22 +200,31 @@ function getLanguageSwitcher(){
 ```
 
 ---
+template: agenda
+---
 # project_pages
 
 ---
 ## project_pages
 
---
-
-node templates
+Module pour la gestion des pages de contenu du site
 
 --
 
-node--type.tpl.php
+node--page.tpl.php
 
---
+---
+## project_pages
 
-hook_preprocess_node
+```php
+function project_pages_preprocess_node( $variables ) {
+
+  if($variables['type'] == 'pages') {
+    $variables['project_pages_data'] = ['test'];
+  
+    }
+}
+```
 
 ---
 ##project_pages 
@@ -176,7 +232,9 @@ Field Values
 
 --
 
-[drupal.org/project/entity](https://www.drupal.org/project/entity)
+```php
+$ drush dl entity
+```
 
 --
 
@@ -187,7 +245,7 @@ entity_metadata_wrapper()
 ##project_pages
 
 ```php
-  $value = $node->field_number[LANGUAGE_NONE][0]['value'] 
+  $value = $node->field_number[LANGUAGE_NONE][0]['value'];
 ```
 --
 ```php
@@ -196,10 +254,6 @@ entity_metadata_wrapper()
 --
 ```php
   $value = $node_wrapper->field_number->value(); 
-```
---
-```php
-  $node_wrapper->field_number->set(1); 
 ```
 
 ---
@@ -222,43 +276,9 @@ $drush dl date
 
 et [briannesbitt/Carbon](https://github.com/briannesbitt/Carbon)
 
-<!-- todo : field module
 
-  ---
-  ## project_pages
-  field_link
-  
-  --
-  
-  [drupal.org/project/link](https://www.drupal.org/project/link)
-  
-  --
-  
-  [drupal.org/project/linkit](https://www.drupal.org/project/linkit)
-  
-  ---
-  class: center, middle
-  
-  ## project_pages
-  
-  ![linkit screen shot](/slides/drupal-api/linkit.png)
-  
-  ---
-  ## project_pages
-  
-  field_date
-  
-  ---
-  ## project_pages
-  
-  ---
-  - Date et carbon
-  - Entity field collection
-  - Taxonomie
-  - i18n_taxonomy_localize_terms
-  
--->
-
+---
+template: agenda
 ---
 # project_blog
 
@@ -280,20 +300,34 @@ hook_preprocess_node()
 ---
 ## project_blog
 hook_menu
+```php
+function project_blog_menu() {
+  return [
+  '/blog/list'=> [
+    'page callback' =>'project_blog_callback'
+    ]
+  ];
+}
+```
+---
+## project_blog
 
+project.com/blog/list
+
+```php
+function project_blog_callback() {
+  return "hello world"
+}
+```
 --
 
-project_blog_callback()
-
---
-
-i18n_translate_path
+project_blog_i18n_translate_path
 
 ---
 ## project_blog
 
 
- new EntityFieldQuery()
+new EntityFieldQuery()
 
 --
 
@@ -305,6 +339,11 @@ theme('pager')
 
 ---
 ## project_blog
+
+Pour afficher le contenu sur une page wysiwyg, on peut utiliser un block
+
+--
+
 project_blog_block_info 
 
 --
@@ -318,6 +357,10 @@ menu_get_object
 ---
 ## project_blog
 
+Exporter la configuration 
+
+--
+
 ``` console
 $ drush dl features
 ```
@@ -328,6 +371,10 @@ dependencies[] = project_blog_nodetype
 
 ---
 ## project_blog
+
+scrip de mise à jours
+
+--
 
 project_blog.install
 
@@ -349,12 +396,7 @@ Gestion des dépendances
 Script d'installation
 
 ---
-## Convention
-
-namespace
-Pas de logique dans les templates
-Module avec le moins de responsabilité possible
-Code over configuration
+template: kds
 
 
     </textarea>
