@@ -1,48 +1,35 @@
 # Keep Drupal Simple
 
----
-## Keep Drupal Simple
+J'ai une nouvelle obsession depuis le début de l'année, développer tout ce que je
+peux en code et éviter le plus possible la configuration par l'interface graphique
+et mes projets sont de plus en plus stable, maléable et simple à comprendre. À 
+chaque projet je trouve de nouvelle fonction que je peux utiliser pour éviter 
+l'interface graphique.
 
-Présentation sur mes habitudes de développement Drupal, les hook, modules et fonctions.
+Il y as deux semaines j'ai découver le billet [Static Prototyping and Keeping 
+Drupal Simple (KDS)](bit.ly/k-d-s) de Frederic Mitchell de Phase 3. L'idée de KDS 
+c'est que les module contribuée comme views ou pannels sont rapide à configurer
+au départ mais qu'ils viennent avec leur propres assomptions et une complexité
+accidentelle. Il propose [...]
 
----
-##sources
-30 DRUPAL 8 API FUNCTIONS YOU SHOULD ALREADY KNOW
+## sources 
 
--Fredric Mitchell, Phase 2
+Je me suis inspiré d'une présentation que Mitchell as donné plus tôt cette année 
+[30 DRUPAL 8 API FUNCTIONS YOU SHOULD ALREADY KNOW](https://bit.ly/d8-api) pour 
+présenter à l'équipe technique de mon agence mes habitudes de développement. 
 
-[bit.ly/d8-api](https://bit.ly/d8-api)
 
----
-##sources
-Static Prototyping and Keeping Drupal Simple (KDS)
+## Prérequis
 
--Fredric Mitchell, Phase 2
+Pour la suite de ce billet je présume une connaissance des concept de base des 
+techniques de base de drupal comme l'override de template et l'utilisation
+de hook.
 
-[bit.ly/k-d-s](https://bitly.com/)
+[liens]
 
----
-## Concept de base
-
-fichiers `.tpl.php`
-
---
-
-Override de hook...
---
- exemple hook_init
-
-```php
-
-function project_init() {
-  print "hello world";
-}
-```
-
----
-class: center
-name: agenda
-## Exemple project
+## project le site
+J'ai présenté un exemple de site fictif nommé 'project' et trois module exemple 
+qui regroupe des fonctionnalité commune à tout les projet de site web [...]
 
 project_Layout
 
@@ -50,295 +37,179 @@ project_pages
 
 project_blog
 
----
-
-# project_Layout
-
----
 
 ## project_layout
 
 page.tpl.php
 
---
-
 hook_preprocess_page
-
---
 
 ```php
 print $project_layout_data['banner'];
 ```
 
----
-## project_layout
-
-Partials...
-
---
-header, footer, menu
-
---
+Partials... header, footer, menu
 
 hook_theme
-
---
 
 ``` php
 $header = theme('header', $variables);
 ```
 
----
-## project_layout
 Menu custom
-
---
 
 menu_tree_page_data()
 
---
-
 url()
 
----
-## project_layout
-
 Menu avec images et classes... 
---
+ 
 menu_attributes
 
 ```console
 $ drush dl menu_attributes
 ```
 
---
-
 file_create_url($uri)
 
----
-## project_layout
 Language switcher
-
---
 
 language_negotiation_get_switch_links()
 
---
-
 drupal_is_front_page()
-
----
-## project_layout
 
 ``` php
 function getLanguageSwitcher(){
-  $path = drupal_is_front_page() ? '<front>' : $_GET['q'];
-    
+$path = drupal_is_front_page() ? '<front>' : $_GET['q'];
+
  $switcher = language_negotiation_get_switch_links(
-    'language_url', 
-    $path
-  );
-  return $switcher->links;
+'language_url', 
+$path
+);
+return $switcher >links;
 }
 ```
 
----
-template: agenda
----
-# project_pages
 
----
+
 ## project_pages
 
 Module pour la gestion des pages de contenu du site
 
---
-
-node--page.tpl.php
-
----
-## project_pages
+node page.tpl.php
 
 ```php
 function project_pages_preprocess_node( $variables ) {
 
-  if($variables['type'] == 'pages') {
-    $variables['project_pages_data'] = ['test'];
-  
-    }
+if($variables['type'] == 'pages') {
+$variables['project_pages_data'] = ['test'];
+
+}
 }
 ```
 
----
-##project_pages 
 Field Values
-
---
 
 ```php
 $ drush dl entity
 ```
 
---
-
 entity_metadata_wrapper()
 
----
-
-##project_pages
-
 ```php
-  $value = $node->field_number[LANGUAGE_NONE][0]['value'];
+$value = $node >field_number[LANGUAGE_NONE][0]['value'];
 ```
---
+ 
 ```php
-  $wrapper = entity_metadata_wrapper('node', $node);
+$wrapper = entity_metadata_wrapper('node', $node);
 ```
---
+ 
 ```php
-  $value = $wrapper->field_number->value(); 
+$value = $wrapper >field_number >value(); 
 ```
-
----
-## project_pages
 
 ```console
 $ drush dl link 
 $ drush dl linkit
 ```
---
+ 
 ```console
 $drush dl field_collection
 ```
 
----
-## project_pages
-
 ```console
 $drush dl date ; 
 ```
---
+ 
 et [briannesbitt/Carbon](https://github.com/briannesbitt/Carbon)
 
----
-template: agenda
----
-# project_blog
 
----
+
+
 ## project_blog
 Exemple de module qui gère une liste de contenu... 
---
+ 
 ça aurrais aussi pus être communiqué, offre d'emploie,
 manuel d'utilisation, commerce, produits etc
 
----
-## project_blog
-node--blog.tpl.php
+node blog.tpl.php
 
 hook_preprocess_node()
 
-...
-
----
-## project_blog
 hook_menu
 ```php
 function project_blog_menu() {
-  return [
-  '/blog/list'=> [
-    'page callback' =>'project_blog_callback'
-    ]
-  ];
+return [
+'/blog/list'=> [
+'page callback' =>'project_blog_callback'
+]
+];
 }
 ```
----
-## project_blog
 
 project.com/blog/list
 
 ```php
 function project_blog_callback() {
-  return "hello world"
+return "hello world"
 }
 ```
---
 
 project_blog_i18n_translate_path
 
----
-## project_blog
-
-
 new EntityFieldQuery()
-
---
 
 node_load_multiple()
 
---
-
 theme('pager')
-
----
-## project_blog
 
 Une liste sur une page wysiwyg ?
 
---
-
 project_blog_block_info 
-
---
 
 project_blog_block_view
 
---
-
 menu_get_object
 
----
-## project_blog
-
 Exporter la configuration 
-
---
 
 ``` console
 $ drush dl features
 ```
-
---
-
 dependencies[] = project_blog_nodetype
 
----
-## project_blog
-
 scrip de mise à jours
-
---
-
 project_blog.install
 
---
 ```php
 project_blog_install_update_7001() {
 module_enable('project_blog_nodetype');
 ```
 
----
 ## project_integration 
-
---
 
 Gestion des dépendances
 
---
-
 Script d'installation
-
----
-template: kds
 
 
