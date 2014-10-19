@@ -1,3 +1,12 @@
+markdown: rdiscount
+permalink: /posts/:title
+rdiscount:
+  extensions: [smart]
+
+gems:
+  - jekyll-sitemap
+
 name: Denis Laliberté
-markdown: redcarpet
-pygments: true
+url: http://denislaliberte.github.io
+description: todo description
+twitter: denislaliberte
