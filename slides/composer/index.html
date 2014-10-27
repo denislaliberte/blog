@@ -43,6 +43,9 @@ r     h1, h2, h3 {
         font-family: 'Ubuntu Mono';
         font-size: 35px;
       }
+      .remark-slide-number {
+        display:none;
+      }
     </style>
   </head>
   <body>
@@ -93,6 +96,17 @@ psr-0
 ---
 ## Autoload
 Namespace
+
+--
+eviter les collisions
+
+```console
+Fatal error: Cannot redeclare test() (previously declared...
+```
+
+```php
+my_package_function_with_a_long_name()
+
 
 ---
 ## Installation
