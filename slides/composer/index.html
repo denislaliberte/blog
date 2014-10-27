@@ -49,107 +49,15 @@ r     h1, h2, h3 {
     </style>
   </head>
   <body>
-    <textarea id="source">
-
-class: center, middle
-# Composer
----
-##Composer
-Un gestionnaire de dépendance pour PHP
-
----
-## Composer
-
-Inspiré par les meilleurs
-
---
-
-npmjs
-
---
-
-bundler.rb
-
----
-## Composer
-Pourquoi composer ?
-
---
-
-Standard
-
---
-
-Facile~
-
----
-### Composer
-Autoload
-Installation ~
-cms
-
----
-## Autoload
-
-psr-0
-
----
-## Autoload
-Namespace
-
---
-eviter les collisions
-
-```console
-Fatal error: Cannot redeclare test() (previously declared...
-```
-
-```php
-my_package_function_with_a_long_name()
-
-
----
-## Installation
-
-composer.json
-
----
-## installation
-
-Maniefeste
-
----
-## Installation
-
-Semantic versionning
-
----
-## Installation
-
-composer.lock
-
----
-## CMS - Drupal
-
-Composer dans un module custom
-
---
-drupal_get_files('')
-autoload
-
-
----
-## CMS - Wordpress
-
-WPackagist
-
-
-
-    </textarea>
     <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
     </script>
     <script type="text/javascript">
-      var slideshow = remark.create({ ratio:'16:9'});
+      var slideshow = remark.create(
+          {
+            ratio:'16:9',
+            sourceUrl: 'index.md'
+          }
+        );
     </script>
   </body>
 </html>
