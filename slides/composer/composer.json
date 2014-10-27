@@ -1,0 +1,7 @@
+{
+    "name": "denislaliberte/mypackage",
+    "description": "Description of my package",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {}
+}

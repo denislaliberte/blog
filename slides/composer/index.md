@@ -1,79 +1,171 @@
 class: center, middle
 # Composer
----
-##Composer
-Un gestionnaire de dépendance pour PHP
-
----
-## Composer
-
-Inspiré par les meilleurs
-
---
-
-npmjs
-
---
-
-bundler.rb
-
----
-## Composer
-Pourquoi composer ?
-
---
-
-Standard
-
---
-
-Facile~
 
 ---
 ### Composer
+
 Autoload
-Installation ~
+
+Installation
+
 cms
 
 ---
-## Autoload
+## Installation
 
-psr-0
+```console
+$ curl -sS https://getcomposer.org/installer | php
+```
+
+---
+##Installation
+
+composer.json
+
+--
+```console
+$ php composer.phar init
+```
+
+---
+## Installation
+composer.json
+```json
+{
+    "name": "denislaliberte/mypackage",
+    "description": "Description of my package",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {}
+}
+```
+
+---
+##Installation
+
+packagist.org
+
+![](packagist.png)
+
+
+---
+##Installation
+require
+
+--
+
+```json
+"require": {
+    "vendor/package": "1.*"
+}
+```
+
+---
+## Installation
+
+semver.org
+
+--
+
+MAJOR.MINOR.PATCH
+
+--
+
+MAJOR version != backwards-compatible
+
+```json
+    "vendor/package": "1.2.*"
+```
+
+---
+## Installation
+
+composer.lock
+
+```console
+$ composer intall
+# vs 
+$ composer update
+```
+
 
 ---
 ## Autoload
 Namespace
 
 --
-eviter les collisions
 
 ```console
 Fatal error: Cannot redeclare test() (previously declared...
 ```
 
+---
+## Autoload
+Namespace
+
+--
+
 ```php
-my_package_function_with_a_long_name()
-
-
----
-## Installation
-
-composer.json
-
----
-## installation
-
-Maniefeste
+//Avant php 5.3
+my_package_function_test();
+```
+--
+```php
+//Après php 5.3
+MyPackage\function\test();
+```
 
 ---
-## Installation
+## Autoload
+Namespace
 
-Semantic versionning
+```php
+use MyPackage\function as f;
+
+f\test();
+```
 
 ---
-## Installation
+## Autoload
+Namespace
 
-composer.lock
+```php
+use MyPackage\function\MyClass;
+
+$class = new MyClass()
+```
+
+---
+## Autoload
+
+```php
+//sans autoload
+require 'vendor/MyPackage/function/MyClass.php';
+use MyPackage\function\MyClass;
+```
+
+--
+
+```php
+//avec autoload
+require 'vendor/autoload.php';
+
+use MyPackage\function\MyClass;
+
+```
+
+---
+## Autoload
+
+www.php-fig.org
+
+--
+
+psr-4
+
+```regexp
+\<NamespaceName>(\<SubNamespaceNames>)*\<ClassName>
+```
 
 ---
 ## CMS - Drupal
