@@ -2,13 +2,87 @@ class: center, middle
 # Composer
 
 ---
-### Composer
+### composer
 
-Autoload
+Inspiration
+
+--
+
+bundler.rb 
+
+--
+
+npm.js
+
+---
+### composer
+
+communauté
+
+--
+
+symfony 2 
+--
+zend 2 
+--
+laravel 4 
+--
+yii 2 
+--
+Aura
+
+--
+
+drupal 8 
+--
+wordpress 4
+
+---
+## Composer
+
+* [Powerful component based mailing library for PHP – Swift Mailer](http://swiftmailer.org/)
+
+--
+
+* [Pimple - A simple PHP Dependency Injection Container](http://pimple.sensiolabs.org/)
+
+--
+
+* [sebastianbergmann/phpunit](https://github.com/sebastianbergmann/phpunit)
+
+---
+
+* [phpspec/phpspec](https://github.com/phpspec/phpspec)
+
+--
+
+* [fabpot/Sami](https://github.com/fabpot/Sami)
+
+--
+
+* [briannesbitt/Carbon](https://github.com/briannesbitt/Carbon)
+
+--
+
+* [igorw/compose](https://github.com/igorw/compose)
+
+--
+
+* [ziadoz/awesome-php](https://github.com/ziadoz/awesome-php)
+
+
+---
+name: agenda
+### Composer
 
 Installation
 
+Autoload
+
 cms
+
+---
+#Installation
 
 ---
 ## Installation
@@ -88,6 +162,11 @@ $ composer intall
 $ composer update
 ```
 
+---
+template: agenda
+
+---
+#Autoload
 
 ---
 ## Autoload
@@ -168,6 +247,12 @@ psr-4
 ```
 
 ---
+template: agenda
+
+---
+#CMS
+
+---
 ## CMS - Drupal
 
 Composer dans un module custom
@@ -181,6 +266,5 @@ autoload
 ## CMS - Wordpress
 
 WPackagist
-
 
 
