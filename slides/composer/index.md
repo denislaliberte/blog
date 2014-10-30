@@ -2,17 +2,30 @@ class: center, middle
 # Composer
 
 ---
+name: agenda
+### Composer
+
+Introduction
+
+Installation
+
+Autoload
+
+---
+#Introduction
+
+---
 ### composer
 
 Inspiration
 
 --
 
-bundler.rb 
+* bundler.rb 
 
 --
 
-npm.js
+* npm.js
 
 ---
 ### composer
@@ -29,13 +42,48 @@ laravel 4
 --
 yii 2 
 --
-Aura
+Aura 
+--
+CodeIgniter 
+--
+CakePHP 
+--
+slim 
+--
+Sculpin 
+--
+Typo3 
+--
+Magento 
+--
+Joomla 
+
 
 --
 
 drupal 8 
 --
 wordpress 4
+
+---
+## Composer
+
+### Drupal 7
+
+Composer dans un module custom
+
+--
+```php
+module_load_include('php','tp1_project','vendor/autoload');
+```
+
+
+---
+## Composer
+### Wordpress
+
+WPackagist
+
 
 ---
 ## Composer
@@ -68,18 +116,19 @@ wordpress 4
 
 --
 
+* [polyfractal/athletic](https://github.com/polyfractal/athletic)
+
+--
+
+* [nikic/iter](https://github.com/nikic/iter)
+
+---
+
 * [ziadoz/awesome-php](https://github.com/ziadoz/awesome-php)
 
 
 ---
-name: agenda
-### Composer
-
-Installation
-
-Autoload
-
-cms
+template: agenda
 
 ---
 #Installation
@@ -247,24 +296,4 @@ psr-4
 ```
 
 ---
-template: agenda
-
----
-#CMS
-
----
-## CMS - Drupal
-
-Composer dans un module custom
-
---
-drupal_get_files('')
-autoload
-
-
----
-## CMS - Wordpress
-
-WPackagist
-
-
+#Composer
