@@ -38,29 +38,21 @@ $project_layout_data['header'] = theme('header', $variables);
 
 ## Menus
 
+Dans certain cas on as besoin d'un markup vraiment préci pour le menu, la solution 
+qu'on trouve la plus simple c'est d'utiliser la fonction `menu_tree_page_data()`
+pour récupérer l'array de data du menu.
+
+Les éléments de menu continnent le machine name de l'élément (ex node/14) et on 
+peut utiliser la fonction `url()` pour obtenir l'alias d'url à utiliser dans le
+menu (ex `example.com/foo/bar/biz`)
 
 
-Menu custom
+Pour ajouter des images ou des classes aux items de menu on utilise le module 
+menu_attibutes et dans le cas des images on utilise la fonction file_create_url()
+pour obtenir l'url de l'image à partir de l'id du fichier.
 
-menu_tree_page_data()
-
-url()
-
-Menu avec images et classes... 
- 
-menu_attributes
-
-```console
-$ drush dl menu_attributes
-```
-
-file_create_url($uri)
-
-Language switcher
-
-language_negotiation_get_switch_links()
-
-drupal_is_front_page()
+Finalement pour le sélecteur de langue on peut aussi obtenir les data avec ces 
+deux fonction :
 
 ``` php
 function getLanguageSwitcher(){
@@ -70,7 +62,7 @@ $path = drupal_is_front_page() ? '<front>' : $_GET['q'];
 'language_url', 
 $path
 );
-return $switcher >links;
+return $switcher->links;
 }
 ```
 
