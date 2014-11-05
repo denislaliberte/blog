@@ -2,6 +2,10 @@
 
 ![composer logo](/images/composer/composer.png)
 
+
+
+
+
 - Introduction
 - Installation
 - Manifeste
