@@ -19,57 +19,40 @@ la plus part des framwork, ,symfony 2  zend 2 ,laravel 4 ,yii 2 ,Aura ,CodeIgnit
 C'est ausi le gestionnaire de dépendance par défaut pour drupal 8 et il est aussi 
 possible de l'utiliser avec wordpress 4 et drupal 7.
 
- 
 Il y as différentes façon d'utiliser composer avec drupal 7, moi j'installe composer 
 dans un module custom et je require l'autoload dans les modules ou j'en ai de besoin.
  
 ```php
 module_load_include('php','tp1_project','vendor/autoload');
 ```
+<!-- todo -->
 ### Wordpress
 
 WPackagist
 
 
  
-Voici quelques 
-* [Powerful component based mailing library for PHP – Swift Mailer](http://swiftmailer.org/)
-* [Pimple - A simple PHP Dependency Injection Container](http://pimple.sensiolabs.org/)
-* [sebastianbergmann/phpunit](https://github.com/sebastianbergmann/phpunit)
-* [phpspec/phpspec](https://github.com/phpspec/phpspec)
-* [fabpot/Sami](https://github.com/fabpot/Sami)
-* [briannesbitt/Carbon](https://github.com/briannesbitt/Carbon)
-* [igorw/compose](https://github.com/igorw/compose)
-* [polyfractal/athletic](https://github.com/polyfractal/athletic)
-* [nikic/iter](https://github.com/nikic/iter)
-* [ziadoz/awesome-php](https://github.com/ziadoz/awesome-php)
 
-
- 
- 
-
- 
-#Installation
-
- 
 ## Installation
+Le processus d'installation de l'outil en ligne de commande est assez simple, il
+suffit d'exécuter la commande suivante, dans la plus part des cas composer vas 
+s'implement s'installer ou vous informer de configuration système à modifier.
 
 ```console
 $ curl -sS https://getcomposer.org/installer | php
 ```
 
- 
-##Installation
 
-composer.json
-
+Ensuite ça prend un manifeste composer.json dans le quels est définie les 
+métadonnées du projets et les dépendances. On peut utiliser la commande 
+suivante pour définir ces méta donnés de façon intéractives.
  
 ```console
 $ php composer.phar init
 ```
 
+Ce qui donne un fichier comme l'exemple suivant.
  
-## Installation
 composer.json
 ```json
 {
@@ -81,13 +64,22 @@ composer.json
 }
 ```
 
- 
-##Installation
+Ensuite il faut trouver quelques librairies à installer, on peut trouver ces 
+dépendances sur le registre officiel de composer [packagist](http://packagist.org)
+ou encore sur ce repos maintenu par la communauté 
+[ziadoz/awesome-php](https://github.com/ziadoz/awesome-php)
 
-packagist.org
-
-![](packagist.png)
-
+Ou pour les besoin du test on peut simplement en choisir dans cette listes qui 
+regroupe quelques outils que j'aime beaucoup.
+* [ Swift Mailer -  le mailer de la communauté symfony ](http://swiftmailer.org/)
+* [Pimple - Le contenur d'injection de dépenance le plus simple qui existe](http://pimple.sensiolabs.org/)
+* [phpunit - Outils de test classique qui as fait ses preuves ](https://github.com/sebastianbergmann/phpunit)
+* [phpspec - Outils de test par spécification inspiré par RSpec de la communauté ruby ](https://github.com/phpspec/phpspec)
+* [Sami - Générateur de documentation ](https://github.com/fabpot/Sami)
+* [Carbon - Un wrapper à l'api de date de php](https://github.com/briannesbitt/Carbon)
+* [compose - Composition de fonction ](https://github.com/igorw/compose)
+* [athletic - outil de benchmark de fonciton ](https://github.com/polyfractal/athletic)
+* [iter - Librairies de fonction lazy sur les itérateurs ](https://github.com/nikic/iter)
 
  
 ##Installation
