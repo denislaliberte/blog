@@ -7,20 +7,23 @@ name: agenda
 - 
 - 
 ---
+##Objectif
 
+Pas d'opétation manuelle en production
 
-Objectif
-Éliminer les étapes manuelles dans la construction du site.
-Construire le sites avec un minimum d'étapes qui peuvent être automatisée
-en une seule étape 
+--
 
-Avoir un historique de la construction du site
+'Build' en une étape
 
+--
 
+Historique du projet
 
----
-première étape vers l'Intégration continue
-
+<!--
+  -productivité développeur, un nouveau développeur peut construire le projet 
+  sans se poser de question
+  - intégration continue 
+-->
 
 ---
 template:agenda
@@ -32,15 +35,53 @@ name:install
 
 --
 
+Script d'installation et d'update des modules drupal
+
+--
+
+hook_install
+
+--
+
 hook_update_n
+
+<!-- todo peut-être ajouter un exemple de code à cette étape -->
 
 ---
 template:install
 
-hook_update doc string
+Drush command
+
+$ drush pm-install module_example
+
+--
+
+$ drush updb
+
+--
+
+$ drush php-script test.php
 
 ---
-template: install
+template:install
+
+```php
+/**
+ * Message to display on the command prompt
+ */
+function module_example_update_12() {
+//...
+```
+
+---
+tempalte:agenda
+---
+#Integration
+---
+name: integration
+## Integration
+
+--
 
 integration module
 
@@ -54,7 +95,8 @@ module_enable
 
 --
 
-theme_enable
+theme_enable(['project_theme'])
+variable_set('theme_default', 'project_theme');
 
 --
 
@@ -107,11 +149,92 @@ field_delete_field
 menu_load
 menu_delete
 
+---
+pathauto : variable set
+  variable_set('pathauto_node_advisor_pattern','find-an-advisor/[node:title]');
+
+---
+## language
+
+    $languages = language_list();
+    variable_set('language_default', $languages['en']);
 
 
+---
+## realm variable
+  $original_realm =  variable_get('variable_realm_list_language');
+  array_push($original_realm,'site_404');
+  variable_set('variable_realm_list_language',$original_realm);
+
+---
+##delete taxonomy
+
+function _delete_taxonomy_by_name($name) {
+  $tax = taxonomy_vocabulary_machine_name_load($name);
+  taxonomy_vocabulary_delete($tax->vid);
+}
+
+---
+## delete menu
+
+function _delete_menu_by_name($name) {
+  $menu = menu_load($name);
+  menu_delete($menu);
+}
 
 
+---
+## l1on update ?!?!?
+function _set_update_of_the_l10n_locally(){
+  variable_set('l10n_update_download_store','sites/all/translations');
+  $local_files_only = 2;
+  variable_set('l10n_update_check_mode',$local_files_only);
+}
+---
+## delete node type
 
+node_type_delete
+
+---
+## add permission
+  _add_permission_to_role('webmestre',$webmestre_permission);
+
+  _create_role('webmestre');
+/*
+ * Create a role by name
+ */
+function _create_role($name) {
+  if(!user_role_load_by_name($name)){
+      $role = new stdClass();
+      $role->name = $name;
+      user_role_save($role);
+  }else {
+    watchdog(
+      'stingray_permission',
+      'Can\'t create the role %role, already exist',
+      ['%role'=>$name],
+      WATCHDOG_WARNING);
+  }
+}
+
+/*
+ * Change permission of a role by name, 
+ * An array example for the permission is show on this page
+ * https://api.drupal.org/api/drupal/modules%21user%21user.module/function/user_role_change_permissions/7
+ */
+function _add_permission_to_role($name,$permission) {
+  $role = user_role_load_by_name($name);
+  if($role) {
+    user_role_change_permissions($role->rid,$permission);
+  }else {
+    watchdog(
+      'stingray_permission',
+      'Can\'t add permission to the role %role, role dont exist',
+      ['%role'=>$name],
+      WATCHDOG_WARNING
+    );
+  }
+}
 
 <!--
   options profil d'installation ?!
