@@ -50,20 +50,34 @@ hook_update_n
 ---
 template:install
 
-Drush command
+Commande drush
+
+module_example_install()
+
+--
 
 $ drush pm-install module_example
+
+---
+template:install
+
+Commande drush 
+
+
+module_example_update_7001()
 
 --
 
 $ drush updb
 
---
 
-$ drush php-script test.php
 
 ---
 template:install
+
+Feedback !
+
+--
 
 ```php
 /**
@@ -74,7 +88,7 @@ function module_example_update_12() {
 ```
 
 ---
-tempalte:agenda
+template: agenda
 ---
 #Integration
 ---
@@ -83,61 +97,62 @@ name: integration
 
 --
 
+Un script unique c'est complexe
+
+--
+
+Un .install par module c'est mieux 
+
+???
+grouper les steps de déploiement par foncitonnalité
+
+--
+
 integration module
 
-dependecy graph
-
-plusieurs  module avec chacun le .install
 ---
-template: install
+template: integration
 
-module_enable
+module project_integration
 
 --
 
-theme_enable(['project_theme'])
-variable_set('theme_default', 'project_theme');
+module_enable('project_layout');
+
+
+---
+#Exemples
+---
+name: exemples
+
+##Exemples
 
 --
 
-variable_set
-
-
----
-# variable
----
-
-variable:
-no strongarm
-variable_set
-$ drush vget
-
+```php
+/**
+ * set project theme
+ */
+function project_layout_update_7001() {
+  theme_enable(['project_theme'])
+  variable_set('theme_default', 'project_theme');
+}
+```
 
 ---
-#drush 
----
+template: exemples
 
-drush command
- 
-$ drush si
-$drush en integration_module
-$drush updb
-$drush feature-revert
+$ drush pm-disable strongarm
 
+--
 
----
-#features
----
+```console
+$ drush variable-get theme
+  admin_theme: 'shiny'
+  node_admin_theme: '1'
+  theme_default: 'stingray'
+```
 
-
----
-#problemes
----
-
-Strongarm
-Realm variables
-roles et droits
-delete operation
 
 ---
 # delete
@@ -236,6 +251,20 @@ function _add_permission_to_role($name,$permission) {
   }
 }
 
+---
+#features
+---
+
+
+---
+#problemes
+---
+
+Strongarm
+Realm variables
+roles et droits
+delete operation
+
 <!--
   options profil d'installation ?!
   
@@ -276,3 +305,9 @@ function _add_permission_to_role($name,$permission) {
   * [Continuous Integration | ThoughtWorks](http://www.thoughtworks.com/continuous-integration)
   * [Continuous Integration](http://www.martinfowler.com/articles/continuousIntegration.html)
   
+
+
+
+
+content vs configuration, choisir ses combats
+$ drush php-script test.php
