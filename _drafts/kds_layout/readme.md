@@ -8,6 +8,8 @@ categories:
 Suite de mes billets sur mes habitudes de dveloppement drupal, pour l'introduction 
 [Keep Drupal Simple](http://denislaliberte.github.io/posts/keep-drupal-simple/)
 
+L'exemple de code se trouve sur ce gist [project_layout.module](https://gist.github.com/denislaliberte/75252ac4882c1bbbb0aa)
+
 Pour chaque projet j'ai un module qui s'occupe spécifiquement du layout, les menus,
 header, footer, bref de tout ce qui est commun à toutes les pages du site.
 
