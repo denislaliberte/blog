@@ -5,8 +5,8 @@ date:   2014-10-18 17:19:33
 categories: 
 ---
 
-J'ai une nouvelle obsession depuis le début de l'année, lorsque je travail sur un 
-projet drupal j'essaie de développer tout ce que je peux en code et d'éviter le 
+J'ai une nouvelle approche au développement drupal depuis le début de l'année
+j'essaie de développer tout ce que je peux en code et d'éviter le 
 plus possible la configuration par l'interface graphique et mes projets sont de 
 plus en plus stable, flexible et simple à comprendre. À chaque projet je trouve 
 de nouvelle fonction que je peux utiliser pour éviter l'interface graphique.

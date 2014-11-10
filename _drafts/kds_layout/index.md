@@ -5,7 +5,11 @@ date:   2014-10-28 00:00:00
 categories: 
 ---
 
-~introduction, retour et lien sur kds
+Suite de mes billets sur mes habitudes de dveloppement drupal, pour l'introduction 
+[Keep Drupal Simple](http://denislaliberte.github.io/posts/keep-drupal-simple/)
+
+Pour chaque projet j'ai un module qui s'occupe spécifiquement du layout, les menus,
+header, footer, bref de tout ce qui est commun à toutes les pages du site.
 
 ## project_layout
 
@@ -13,15 +17,12 @@ Le template page.tpl.php contiens le layout global de drupal, le header, le foot
 les colonnes et menus. Ce qui est spécifique aux pages est contenu dans des régions
 affiché dans ce layout.
 
-~exemple régions
-
-Une approche commune à drupal c'est de mettre le plus de choses possible du layout
-dans des blocks et de les afficher dans les régions... le page.tpl ne contiens que 
-peu de markup.
-
-J'ai une approche différente. Le contenu spécifique à une page est affiché dans 
-la région content et on utilise le hook_preprocess_page pour préparer un array de
-string à afficher dans le template.
+Une approche fréquente dans le développement drupal c'est de mettre le plus de 
+choses possible du layout dans des blocks et de les afficher dans les régions... 
+le page.tpl ne contiens que 
+peu de markup. J'ai une approche différente. Le contenu spécifique à une page est 
+affiché dans la région content et on utilise le hook_preprocess_page pour préparer 
+un array de string à afficher dans le template.
 
 ```php
 print $project_layout_data['banner'];
