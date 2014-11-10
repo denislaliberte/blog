@@ -4,31 +4,29 @@ function project_layout_preprocess_page() {
   $project_layout_data = [];
   $header_variables = _get_header_variables();
   $project_layout_data['header'] = theme('header', $header_variables);
-
+  return ['project_layout_data'=>$project_layout_data];
 }
 
 function _get_header_variables() {
-  $variables = [];
-  
-  //menu_tree_page_data()
+  $project_menu = menu_tree_page_data('project_menu');
 
   //url()
   //file_create_url()
-
-  $variables['language_switcher'] = _get_language_switcher();
-
+  $variables = ['project_layout_data'=>[
+    'language_switcher' =>_get_language_switcher(),
+    ]
+    ];
+  return $variable;
 }
 
 function _get_language_switcher(){
-$path = drupal_is_front_page() ? '<front>' : $_GET['q'];
-
- $switcher = language_negotiation_get_switch_links(
-'language_url', 
-$path
-);
-return $switcher->links;
+    $path = drupal_is_front_page() ? '<front>' : $_GET['q'];
+    $switcher = language_negotiation_get_switch_links(
+        'language_url', 
+        $path
+    );
+    return $switcher->links;
 }
-
 
 function project_layout_theme() {
   //header
