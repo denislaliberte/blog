@@ -34,7 +34,7 @@ le hook_preprocess_page on vas utiliser la fonction theme() pour appeler ces tem
 avec les variables spécifique dont il as de besoin.
 
 ``` php
-$project_layout_data['header'] = theme('header', $variables);
+$project_layout_data['header'] = theme('header', $header_variables);
 ```
 
 ## Menus
@@ -56,7 +56,7 @@ Finalement pour le sélecteur de langue on peut aussi obtenir les data avec ces
 deux fonction :
 
 ``` php
-function getLanguageSwitcher(){
+function _get_language_switcher(){
 $path = drupal_is_front_page() ? '<front>' : $_GET['q'];
 
  $switcher = language_negotiation_get_switch_links(
