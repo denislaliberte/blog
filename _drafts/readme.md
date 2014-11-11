@@ -2,19 +2,19 @@ Roadmap
 =======
 
 ## current
-- drupal 7 api
-- module de prototypage
-- function micro librairy
-- composer
+- drupal script slide
+- layout billet
+- page gist
+- liste gist
+- functionnal pattern
+- composer billet
 
 ## backlog
-- outils
-  * composer
-  * composer in a gist
 - développement 
   * module de prototypage
   * function micro librairy
   * drupal 7
+- jenkins
 * test et CI
     - outils
     - Adapter mock et data
