@@ -30,7 +30,7 @@ name: drush
 ### Drupal shell
 
 ???
-Réfère à drupal shell, c'est l'outil en ligne de commande de drupal.
+Drush c'est le drupal shell, c'est l'outil en ligne de commande de drupal.
 
 --
 
@@ -79,7 +79,7 @@ template:drush
 ### Mise à jours
 
 ???
-On peut faire les update du code et de la base de données par drush.
+On peut faire les mises à jour du code et de la base de données par drush.
 
 --
 
@@ -132,13 +132,14 @@ template: drush
 ### Gestion des modules
 
 ???
-On peut aussi gérer les modules, téléchargement, installation et update
+On peut aussi gérer les modules, téléchargements, installations et update
 
-Dans cet exemple on télécharge les modules d'exemple de drupal.
+Avec la commande suivante on télécharge le projet example de drupal. Ce sont des
+exemple de module pour apprendre à travailler avec les api backend de drupal.
 
 --
 
-```console
+```shell
 $ drush pm-download example
 Project examples (7.x-1.x-dev) downloaded to sites/all/modules/examples.
 ```
@@ -146,24 +147,28 @@ Project examples (7.x-1.x-dev) downloaded to sites/all/modules/examples.
 [Examples for Developers | drupal.org](https://www.drupal.org/project/examples)
 
 ---
+##hook_menu
+---
+## hook_theme
+---
+## hook_preprocess_
+---
 template: agenda
 
 ---
-name: module
-## Création d'un module
+name: block
+## block_example
 
 --
-
-### block_example
 
 ???
 Nous allons étudier le module 'block_example' qui démontre comment créer un block custom.
 
 Au minimum un module contiens un fichier de configuration block_example.info et 
-un module avec le code block_example.module.
+un fichier avec le code block_example.module.
 
 Le fichier block_example.install contiens le script d'installation et le block_example.test
-contiens les tests d'intégration drupal avec simple test.
+contiens les tests d'intégration drupal avec Simple Test.
 --
 
 ```console
@@ -176,11 +181,12 @@ block_example.test
 ```
 
 ---
-template: module
+template: block
 
 ### block_example.info
 ???
-Le fichier info contiens l'information du module 
+Le fichier info contiens l'information du module qui seront affiché dans 
+l'interface d'administration ou dans la commande `drush pm-info`.
 --
 
 ```
@@ -191,22 +197,30 @@ core = 7.x
 ```
 
 ---
-template: module
+template: block
 
-### hook_block_info
+### HOOK_block_info
 
 ???
 Dans le fichier .module on définie des hook pour que drupal puisse appeler notre 
 code. Les hook sont des fonction qui débute avec le nom du module.
 
-Dans cette exemple on défini le hook pour fournir les informations de notre block
-À drupal, on peut voir la structure attendu sur la page de la documentation.
+Par exemple pour implémenter hook_block_info on définie une fonction avec le nom
+block_example_block_info().
 --
 
 ```php
 <?php
   function block_example_block_info() {
-# ....
+```
+
+???
+
+Le hook block_info on retourne les informations de notre block à drupal.
+---
+template: block
+
+```php
   $blocks['example_uppercase'] = array(
     'info' => t('Example: uppercase this please'),
     'status' => TRUE,
@@ -216,38 +230,73 @@ Dans cette exemple on défini le hook pour fournir les informations de notre blo
  }
 ```
 
-[function hook_block_info | drupal.org](https://api.drupal.org/api/drupal/modules%21block%21block.api.php/function/hook_block_info/7)
+???
+Les valeurs possible de l'array de block est documenté sur le site de drupal.org
 
 ---
-template: module
+template: block
+
+[hook_block_info | drupal.org](https://api.drupal.org/api/drupal/modules%21block%21block.api.php/function/hook_block_info/7)
+
+[hooks | drupal.org](https://api.drupal.org/api/drupal/includes%21module.inc/group/hooks/7)
+
+???
+Lorsque drupal as les information du block, on peut l'assigner à une région dans 
+l'interface administrateur.
+---
+template: block
+
+example.local/admin/structure/block
+
+![](images/block.png)
+
+---
+template: block
 
 ### hook_block_view
 
+???
+Le hook block view est appelé par drupal avant d'afficher les block et le machine
+name du block est passé en argument.
+--
 
+```php
+function block_example_block_view($delta = '') {
+  switch ($delta) {
+    case 'example_configurable_text':
+```
 
+???
+On as simplement à ajouter la string qu'on veux afficher comme valeur à 
+la clé 'content' pour qu'elle s'affiche dans le block.
+---
+template: block
+### example_empty
 
+```php
+    case 'example_empty':
+      $block['subject'] = t('Title of second block');
+      $block['content'] = block_example_contents($delta);
+    break;
+```
+---
+name: Region
+
+###
 
 ---
-## hook_preprocess_
----
-## hook_theme
----
-## hook_block
----
-##hook_menu
----
-## Système d'ouverride de template dans drupal
-
-
-
-
-
+name: theme
 
 
 ---
 ## Système de région
     créer une nouvelle région
    Associer un block à une région
+---
+## Système d'ouverride de template dans drupal
+
+
+
 ---
 ## Système de variables
    déclaration métadata
