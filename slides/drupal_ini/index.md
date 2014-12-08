@@ -147,15 +147,6 @@ Project examples (7.x-1.x-dev) downloaded to sites/all/modules/examples.
 [Examples for Developers | drupal.org](https://www.drupal.org/project/examples)
 
 ---
-##hook_menu
----
-## hook_theme
----
-## hook_preprocess_
----
-template: agenda
-
----
 name: block
 ## block_example
 
@@ -287,14 +278,117 @@ name: Region
 ---
 name: theme
 
+drush dl mothership
+drush cc all
 
----
+drush |grep  mothership
+Other commands: (make,mothership)
+ mothership            Create a mothership sub-theme.
+ drush mothership test
+ Mothership subtheme "test" created in: /Users/dl/Sites/drupal-7.34/sites/all/themes/test
+ Visit your themes settings page and configure it to your liking: http://default/admin/appearance/settings/test
+--s
 ## Système de région
     créer une nouvelle région
    Associer un block à une région
 ---
 ## Système d'ouverride de template dans drupal
 
+
+---
+template: agenda
+
+---
+name: menu
+## hook_menu
+
+???
+Les routes dans drupal sont déclaré en utilisant le hook menu. Ça porte à confusion 
+au début mais pour les développeur drupal un menu ce n'est pas un menu c'est une 
+route, le path pour accéder à une page custom.
+
+Nous allons regarder les exemples fournis par drupal.
+
+--
+
+```console
+$cd ~/Sites/drupal-7.34/sites/all/modules/examples/menu_example
+
+$ls
+menu_example.info   menu_example.module menu_example.test
+```
+
+---
+template: menu
+
+```php
+/**
+ * Implements hook_menu().
+ *
+ * A simple example which defines a page callback and a menu entry.
+ */
+function menu_example_menu() {
+```
+
+???
+Dans le fichier menu_example.module on définit le hook_menu que nous allons 
+utiliser pour retourner les informations sur nos routes à drupal.
+
+---
+template: menu
+
+ example.local/examples/menu_example
+
+```php
+function menu_example_menu() {
+  $items['examples/menu_example'] = array(
+    'page callback' => '_menu_example_basic_instructions',
+    'access callback' => TRUE,
+    );
+  return $items;
+}
+```
+
+???
+
+Chaque clés de l'array que nous allons retourner seras utilisé comme route.
+
+Et la clé 'page callback' contiens la chaine de caractère qui seras appelé
+pour cette route.
+
+---
+template: menu
+
+```php
+function _menu_example_basic_instructions($content = NULL) {
+  $base_content = t(
+  'This is the base page of the Menu Example. There are a number of examples
+  here, from the most basic (like this one) to extravagant mappings of loaded
+  placeholder arguments. Enjoy!');
+  return '<div>' . $base_content . '</div><br /><div>' . $content . '</div>';
+}
+```
+
+???
+La fonction callback définie dans le hook_menu retourne le markup à afficher sur
+dans le contenu de la route.
+
+Voici la documentation du hook menu et celle du hook_i18n_translate_path qui
+est pratique pour associer les routes des différentes langues pour que drupal
+puisse construire le language switcher.
+---
+template:menu
+
+[ hook_menu | drupal.org ](https://api.drupal.org/api/drupal/modules%21system%21system.api.php/function/hook_menu/7)
+
+[ hook_i18n_translate_path | drupalcontrib.org ](http://drupalcontrib.org/api/drupal/contributions!i18n!i18n.api.php/function/hook_i18n_translate_path/7)
+
+---
+## hook_theme
+---
+## hook_preprocess_
+---
+template: agenda
 
 
 ---
