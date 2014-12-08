@@ -1,7 +1,7 @@
 #!/bin/bash
 
-## remove remark specific markdown
-sed '/--/d' index.md |  sed '/:/d' | sed '/???/d' > document.md
+## remove remark specific markdown (slides separator, comments, slides information and todo comments)
+sed '/--/d' index.md |  sed '/:/d' | sed '/???/d' | sed '/_todo_/d' > document.md
 
-## expoert to pdf with pandoc
+## export to pdf with pandoc
 pandoc -o document.pdf document.md
