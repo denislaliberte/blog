@@ -303,7 +303,7 @@ Nous allons regarder les exemples fournis par drupal.
 
 --
 
-```shell
+```bash
 $cd ~/Sites/drupal-7.34/sites/all/modules/examples/menu_example
 
 $ls
@@ -312,6 +312,13 @@ menu_example.info   menu_example.module menu_example.test
 
 ---
 template: menu
+
+### menu_example.module
+
+???
+Dans le fichier menu_example.module on définit le hook_menu que nous allons 
+utiliser pour retourner les informations sur nos routes à drupal.
+--
 
 ```php
 /**
@@ -322,44 +329,35 @@ template: menu
 function menu_example_menu() {
 ```
 
-???
-Dans le fichier menu_example.module on définit le hook_menu que nous allons 
-utiliser pour retourner les informations sur nos routes à drupal.
 
 ---
 template: menu
 
- example.local/examples/menu_example
+example.local/examples/menu_example
+
+???
+Si on veux ajouter la route examples/menu_example à notre projet
+on ajoute la route comme clé à l'array que retourne le hook
+on déclare une fonction callback et une validation d'accès.
+
+En retournant 'TRUE' on s'assure que tout les rôles ont accès
+à notre page.
+--
 
 ```php
 function menu_example_menu() {
-  $items['examples/menu_example'] = array(
-    'page callback' => '_menu_example_basic_instructions',
+* $items['examples/menu_example'] = array(
+*   'page callback' => '_menu_example_basic_instructions',
     'access callback' => TRUE,
     );
   return $items;
 }
 ```
 
-???
-
-Chaque clés de l'array que nous allons retourner seras utilisé comme route.
-
-Et la clé 'page callback' contiens la chaine de caractère qui seras appelé
-pour cette route.
-
 ---
 template: menu
 
-```php
-function _menu_example_basic_instructions($content = NULL) {
-  $base_content = t(
-  'This is the base page of the Menu Example. There are a number of examples
-  here, from the most basic (like this one) to extravagant mappings of loaded
-  placeholder arguments. Enjoy!');
-  return '<div>' . $base_content . '</div><br /><div>' . $content . '</div>';
-}
-```
+### Callback
 
 ???
 La fonction callback définie dans le hook_menu retourne le markup à afficher sur
@@ -368,8 +366,21 @@ dans le contenu de la route.
 Voici la documentation du hook menu et celle du hook_i18n_translate_path qui
 est pratique pour associer les routes des différentes langues pour que drupal
 puisse construire le language switcher.
+--
+
+```php
+*function _menu_example_basic_instructions($content = NULL) {
+  $base_content = t(
+  'This is the base page of the Menu Example. There are a number of examples
+  here, from the most basic (like this one) to extravagant mappings of loaded
+  placeholder arguments. Enjoy!');
+*  return '<div>' . $base_content . '</div><br /><div>' . $content . '</div>';
+```
+
 ---
 template:menu
+
+### documentation
 
 [ hook_menu | drupal.org ](https://api.drupal.org/api/drupal/modules%21system%21system.api.php/function/hook_menu/7)
 
