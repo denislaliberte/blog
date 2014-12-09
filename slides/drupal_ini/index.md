@@ -183,8 +183,7 @@ Le fichier info contiens l'information du module qui seront affiché dans
 l'interface d'administration ou dans la commande `drush pm-info`.
 --
 
-```bash
-$ head -4 block_example.info
+```
 name = Block Example
 description = An example outlining how a module can define blocks.
 package = Example modules
@@ -213,11 +212,13 @@ block_example_block_info().
 *  function block_example_block_info() {
 ```
 
-???
-
-Le hook block_info on retourne les informations de notre block à drupal.
 ---
 template: block
+
+### HOOK_block_info
+???
+Le hook block_info on retourne les informations de notre block à drupal.
+--
 
 ```php
   $blocks['example_uppercase'] = array(
@@ -229,23 +230,29 @@ template: block
  }
 ```
 
+---
+template: block
+
+### documentation
+
 ???
 Les valeurs possible de l'array de block est documenté sur le site de drupal.org
 
----
-template: block
+Et on as la listes des hook disponibles sur le lien suivant.
+--
 
 [hook_block_info | drupal.org](https://api.drupal.org/api/drupal/modules%21block%21block.api.php/function/hook_block_info/7)
 
 [hooks | drupal.org](https://api.drupal.org/api/drupal/includes%21module.inc/group/hooks/7)
 
-???
-Lorsque drupal as les information du block, on peut l'assigner à une région dans 
-l'interface administrateur.
 ---
 template: block
 
 example.local/admin/structure/block
+???
+Lorsque drupal as les informations du block, on peut l'assigner à une région dans 
+l'interface administrateur.
+--
 
 ![](images/block.png)
 
@@ -265,43 +272,20 @@ function block_example_block_view($delta = '') {
     case 'example_configurable_text':
 ```
 
-???
-On as simplement à ajouter la string qu'on veux afficher comme valeur à 
-la clé 'content' pour qu'elle s'affiche dans le block.
 ---
 template: block
 ### example_empty
 
+???
+On as simplement à ajouter la string qu'on veux afficher comme valeur à 
+la clé 'content' pour qu'elle s'affiche dans le block.
+--
 ```php
     case 'example_empty':
       $block['subject'] = t('Title of second block');
       $block['content'] = block_example_contents($delta);
     break;
 ```
----
-name: Region
-
-###
-
----
-name: theme
-
-drush dl mothership
-drush cc all
-
-drush |grep  mothership
-Other commands: (make,mothership)
- mothership            Create a mothership sub-theme.
- drush mothership test
- Mothership subtheme "test" created in: /Users/dl/Sites/drupal-7.34/sites/all/themes/test
- Visit your themes settings page and configure it to your liking: http://default/admin/appearance/settings/test
---s
-## Système de région
-    créer une nouvelle région
-   Associer un block à une région
----
-## Système d'ouverride de template dans drupal
-
 
 ---
 template: agenda
@@ -596,6 +580,30 @@ function variable_example_menu() {
 ---
 ## Gestion des menus
 ---
+
+---
+name: theme
+
+###
+
+---
+name: theme
+
+drush dl mothership
+drush cc all
+
+drush |grep  mothership
+Other commands: (make,mothership)
+ mothership            Create a mothership sub-theme.
+ drush mothership test
+ Mothership subtheme "test" created in: /Users/dl/Sites/drupal-7.34/sites/all/themes/test
+ Visit your themes settings page and configure it to your liking: http://default/admin/appearance/settings/test
+--s
+## Système de région
+    créer une nouvelle région
+   Associer un block à une région
+---
+## Système d'ouverride de template dans drupal
 
 
 Modication de la portion backend
