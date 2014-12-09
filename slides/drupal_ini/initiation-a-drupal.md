@@ -12,6 +12,8 @@ Les slides de la présentation sont disponible à cet url
 - Drush
 - Module et hook
 - API
+- theme
+- configuration
 
 
 
@@ -648,25 +650,10 @@ regions[header] = Header
 ```
 
 ## Création d'un type de content
-## Utilisation du module field collection
 
-Modication de la portion backend
-## Gestions des librairies et autoloader (composer)
-## Exemples de code et test automatisé (phpspec)
-## Traitement des variables des éléments de conteu
-    Drupal adapter
-   Arrays functions
-    Fields functions
-   Menu
+Utilisation du module field collection
 
 
-## Gestion des menus
-
-## Fonction des différentes branches
-## Fonction des différents Environnements
-## Déploiement du code et mise à jours de la configuration
-
-Gestion de la configurations et mise à jours automatisé
 
 ## Configuration drupal par script automatisés
      fichier.install
@@ -675,3 +662,13 @@ Gestion de la configurations et mise à jours automatisé
  ## gestion des roles et permissions
  ## Export de la configuration par features
  ## Module d'intégration
+
+## Fonction des différentes branches/environnement
+## Gestions des librairies et autoloader (composer)
+## Exemples de code et test automatisé (phpspec)
+## Traitement des variables des éléments de conteu
+    Drupal adapter
+   Arrays functions
+    Fields functions
+   Menu
+
