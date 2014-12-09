@@ -1,6 +1,7 @@
 # Initiation a Drupal
-## slides
-
+## slides *
+ *
+a
 Les slides de la présentation sont disponible à cet url
 
 [bit.ly/drupalini](bit.ly/drupalini)
@@ -35,7 +36,7 @@ de drupal, les thèmes et les modules.
 
 ```shell
 $ cd ~/Sites
-*$ drush pm-download
+$ drush pm-download
 Project drupal (7.34) downloaded to /Users/dl/Sites/drupal-7.34
 ```
 
@@ -48,7 +49,7 @@ fichier de configuration.
 
 ```console
 $ cd /Users/dl/Sites/drupal-7.34
-*$ drush site-install standard \
+$ drush site-install standard \
 ```
 
 
@@ -59,10 +60,10 @@ de données par drush.
 
 
 ```console
-*$ drush pm-updatecode
+$ drush pm-updatecode
 No code updates available.
 
-*$drush updatedb
+$drush updatedb
 No database updates required
 ```
 
@@ -85,7 +86,7 @@ explorer l'api.
 
 ```console
 $ echo "<?php var_dump(menu_tree_page_data('main-menu'));" > test.php
-*$ drush php-script test.php
+$ drush php-script test.php
  array(1) {
    '50000 Home 218' =>
    
@@ -102,7 +103,7 @@ exemples de module pour apprendre à travailler avec les api backend de drupal.
 
 
 ```shell
-*$ drush pm-download example
+$ drush pm-download example
 Project examples (7.x-1.x-dev) downloaded to sites/all/modules/examples.
 ```
 
@@ -317,7 +318,7 @@ chaine de caractère contenant le markup du fichier template my-template-name.tp
 
 ```php
   function _menu_callback() {
-*    return theme('my_theme_key',['title'=> "variable value"]);
+    return theme('my_theme_key',['title'=> "variable value"]);
   }
 ```
 
@@ -403,13 +404,13 @@ l'associe à un groupe de variable.
 ```php
 //variable_example.variable.inc
 function variable_example_variable_info($options) {
-* $variables['variable_example_text'] = array(
+ $variables['variable_example_text'] = array(
     'type' => 'text',
     'title' => t('Simple text', array(), $options),
     'default' => 'Example text.',
     'description' => t('Example of text variable.', array(), $options),
     'required' => TRUE,
-*   'group' => 'variable_example',
+   'group' => 'variable_example',
 ```
 
 
@@ -419,11 +420,11 @@ path.
 
 ```php
 function variable_example_variable_group_info() { 
-* $groups['variable_example'] = array( 
+ $groups['variable_example'] = array( 
     'title' => t('Examples'), 
     'description' => t('Variable examples of different types.'), 
     'access' => 'administer site configuration', 
-*   'path' => array('admin/config/system/variable/example'),
+   'path' => array('admin/config/system/variable/example'),
 ```
 
 Finalement on utilise déclare la route custom pour la page d'administration de 
@@ -438,8 +439,8 @@ function variable_example_menu() {
     'path' => array('admin/config/system/variable/example'),
     'title' => 'Variable example',
     'description' => 'Example of auto generated settings form.',
-*   'page callback' => 'drupal_get_form',
-*   'page arguments' => array('variable_group_form', 'variable_example'),
+   'page callback' => 'drupal_get_form',
+   'page arguments' => array('variable_group_form', 'variable_example'),
     'access arguments' => array('administer site configuration'),
   );
 ```

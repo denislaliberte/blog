@@ -2,7 +2,6 @@ class: center, middle
 # Initiation a Drupal
 ---
 ## slides
-
 ???
 Les slides de la présentation sont disponible à cet url
 --
@@ -18,7 +17,8 @@ __todo__ ajouter bitly pour slides et la version texte
 name: agenda
 ## Agenda
 - Drush
-- Module
+- Module et hook
+- API
 
 
 ???
