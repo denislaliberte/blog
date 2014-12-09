@@ -1,7 +1,5 @@
 # Initiation a Drupal
-## slides *
- *
-a
+## slides
 Les slides de la présentation sont disponible à cet url
 
 [bit.ly/drupalini](bit.ly/drupalini)
@@ -12,7 +10,8 @@ Les slides de la présentation sont disponible à cet url
 
 ## Agenda
 - Drush
-- Module
+- Module et hook
+- API
 
 
 
@@ -34,7 +33,7 @@ Drush contiens un projet manager, qui peut télécharger et mettre à jours le c
 de drupal, les thèmes et les modules.
 
 
-```shell
+```bash
 $ cd ~/Sites
 $ drush pm-download
 Project drupal (7.34) downloaded to /Users/dl/Sites/drupal-7.34
@@ -47,7 +46,7 @@ Drush permet d'installer drupal, ce qui créé ou écrase la base de données et
 fichier de configuration.
 
 
-```console
+```bash
 $ cd /Users/dl/Sites/drupal-7.34
 $ drush site-install standard \
 ```
@@ -59,11 +58,11 @@ On peut faire les mises à jour du code des modules et du core ainsi que la base
 de données par drush.
 
 
-```console
+```bash
 $ drush pm-updatecode
 No code updates available.
 
-$drush updatedb
+$ drush updatedb
 No database updates required
 ```
 
@@ -71,7 +70,7 @@ No database updates required
 ### Variables
 
 Drush permet d'inspecter et de modifier les variables de drupal.
-```console
+```bash
 $ drush variable-get name
 
 $ drush variable-set site_name new-name
@@ -80,29 +79,29 @@ site_name was set to "new-name".
 
 ### script
 
-On peut utiliser drush pour executer des scriptis php ce qui est pratique pour 
+On peut utiliser drush pour executer des scripts php ce qui est pratique pour 
 explorer l'api.
 
 
-```console
-$ echo "<?php var_dump(menu_tree_page_data('main-menu'));" > test.php
+```bash
+$ echo "<?php var_dump(menu_tree_page_data('main-menu'));" \
+  > test.php
 $ drush php-script test.php
  array(1) {
    '50000 Home 218' =>
-   
    [...]
 ```
 
 
 ### Gestion des modules
 
-On peut aussi gérer les téléchargements, installations et update des modules
+On peut aussi gérer les téléchargements, installations et mise à jour des modules
 
 Avec la commande suivante on télécharge le projet example de drupal. Ce sont des
 exemples de module pour apprendre à travailler avec les api backend de drupal.
 
 
-```shell
+```bash
 $ drush pm-download example
 Project examples (7.x-1.x-dev) downloaded to sites/all/modules/examples.
 ```
@@ -110,7 +109,6 @@ Project examples (7.x-1.x-dev) downloaded to sites/all/modules/examples.
 [Examples for Developers | drupal.org](https://www.drupal.org/project/examples)
 
 ## block_example
-
 
 Nous allons étudier le module 'block_example' qui démontre comment créer un block custom.
 
@@ -134,7 +132,8 @@ block_example.test
 Le fichier info contiens l'information du module qui seront affiché dans 
 l'interface d'administration ou dans la commande `drush pm-info`.
 
-```
+```bash
+$ head -4 block_example.info
 name = Block Example
 description = An example outlining how a module can define blocks.
 package = Example modules
@@ -151,7 +150,11 @@ Par exemple pour implémenter hook_block_info on définie une fonction avec le n
 block_example_block_info().
 
 ```php
-<?php
+/**
+ * Implements hook_block_info().
+ *
+ * This hook declares what blocks are provided by the module.
+ */
   function block_example_block_info() {
 ```
 
