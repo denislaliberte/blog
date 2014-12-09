@@ -869,15 +869,21 @@ regions[header] = Header
 
 ---
 name: configuration
-## Création d'un type de content
+## Configuration
 
 ???
-Utilisation du module field collection
-__todo__
 
+---
+template:configuration
+###Field collection
+
+???
+Utilisation du module field collect
 --
 
 
+---
+ ## Export de la configuration par features
 ---
 ## Configuration drupal par script automatisés
      fichier.install
@@ -886,8 +892,6 @@ __todo__
  ## gestion des variables et des modules
 ---
  ## gestion des roles et permissions
----
- ## Export de la configuration par features
 ---
  ## Module d'intégration
 
