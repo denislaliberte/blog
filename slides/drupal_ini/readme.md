@@ -2,7 +2,7 @@
 ## slides
 Les slides de la présentation sont disponible à cet url
 
-bit.ly / drupalini
+[bit.ly / drupalini](http://bit.ly/drupalini)
 
 [initiation-a-drupal.pdf](initiation-a-drupal.pdf)
 
