@@ -916,12 +916,74 @@ type de contenu de la section structure et on peut ajouter et modifier ses field
 ![](images/edit-field-button.png)
 
 ---
-template:configuration
-###Field collection
+template: configuration
+
+### Add fields
 
 ???
-Utilisation du module field collect
+Dans l'interface des fields on as simplement à fournir un nom à notre field et 
+à choisir un type de field pour l'ajouter à notre type de contenu.
+
+Plusieurs type de field sont disponible par des modules contribués, date, image, 
+liens etc
 --
+
+![](images/add-fields.png)
+
+---
+template: configuration
+
+### field group
+
+???
+Lorsqu'on as des types de contenu complexe avec quelques dizaines de fields
+la page de configuration deviens compliqué à comprendre. On peut utiliser
+le module field_group pour grouper les field dans l'interface d'administration.
+--
+
+```shell
+$ drush dl field_group
+$ drush en -y field_group
+```
+
+---
+template: configuration
+
+### Field group
+???
+Une fois que le module est activé on as la possibilité d'ajouter des field group
+et on peux ensuite réorganiser les field pour les insérer dans les groups.
+
+--
+![](images/field-group.png)
+
+---
+template:configuration
+### Field collection
+
+???
+Un exemple de module de field qu'on utilise c'est le module field collection
+
+Il permet de faire des groupes de fields répétable.
+
+--
+
+```bash
+$ drush dl field_collection
+```
+
+---
+template: configuration
+
+### Field collection
+
+???
+Lorsqu'on ajoute un nouveau field de type field collection à un type de contenu
+il créé un nouvelle entyté, qu'on peut configuré dans la page d'administration des
+field-collection dans la section structure.
+--
+
+![](images/field-collection.png)
 
 ---
 ## Export de la configuration par features
