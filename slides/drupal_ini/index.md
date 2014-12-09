@@ -6,12 +6,9 @@ class: center, middle
 Les slides de la présentation sont disponible à cet url
 --
 
-[bit.ly/drupalini](bit.ly/drupalini)
+bit.ly / drupalini
 
 [initiation-a-drupal.pdf](initiation-a-drupal.pdf)
-
-
-__todo__ ajouter bitly pour slides et la version texte
 
 ---
 name: agenda
@@ -161,6 +158,26 @@ Project examples (7.x-1.x-dev) downloaded to sites/all/modules/examples.
 [Examples for Developers | drupal.org](https://www.drupal.org/project/examples)
 
 ---
+template:agenda
+
+---
+name: module
+
+## Module et hook
+
+- Block
+- Menu
+- Theme
+- Preprocess
+- Variable
+- Query
+- Entity api
+
+???
+Lorsqu'on veux intéragir avec le code de drupal, on utilise le système de hook
+et de module de drupal. Nous allons couvrir quelques hook et api qui sont disponible
+dans les modules.
+---
 name: block
 ## block_example
 
@@ -297,7 +314,7 @@ la clé 'content' pour qu'elle s'affiche dans le block.
 ```
 
 ---
-template: agenda
+template: module
 
 ---
 name: menu
@@ -396,7 +413,8 @@ template:menu
 [ hook_i18n_translate_path | drupalcontrib.org ](http://drupalcontrib.org/api/drupal/contributions!i18n!i18n.api.php/function/hook_i18n_translate_path/7)
 
 ---
-template: agenda
+template: module
+
 
 ---
 name: hook_theme
@@ -457,7 +475,7 @@ Le deuxième argument de la fonciton thème contiens les variables du template
 et les clés seront les noms des variables.
 
 ---
-template: agenda
+template: module
 
 ---
 name: preprocess
@@ -519,7 +537,7 @@ function my_example_preprocess_node( &$var ) {
 ```
 
 ---
-template: agenda
+template: module
 
 
 ---
@@ -622,9 +640,7 @@ function variable_example_menu() {
 ???
 
 ---
-template:agenda
-???
-__todo__ transition de hook à api
+template:module
 ---
 name: efq
 ## EntityFieldQuery
@@ -659,6 +675,9 @@ template: efq
 
 ### documentation
 [How to use EntityFieldQuery | drupal.org](https://www.drupal.org/node/1343708)
+
+---
+template: module
 
 ---
 name:entity
@@ -712,6 +731,8 @@ propriétés d'une entity on peux utiliser la méthode getPropertyInfo
   var_dump($wrapper->getPropertyInfo());
 ```
 
+---
+template: agenda
 
 ---
 name: theme
@@ -802,9 +823,6 @@ défaut défini dans le module.
 ```bash
 $ cp ../mothership/mothership/templates/page.tpl.php .
 ```
-
----
-template: theme
 
 ---
 template: theme
