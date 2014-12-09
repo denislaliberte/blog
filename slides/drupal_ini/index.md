@@ -15,19 +15,15 @@ name: agenda
 ## Agenda
 - Drush
 - Module et hook
-- API
 - theme
 - configuration
 
-
 ???
-
 __todo__ ajuster l'agenda
 
 ---
 name: drush
 ## Drush
-
 --
 
 ### Drupal shell
@@ -80,7 +76,6 @@ template: hook_theme
 my-template-name.tpl.php
 ```php
   <h1><?php print $title ?></h1>
-```
 ```
 
 ---
@@ -355,7 +350,6 @@ utiliser pour retourner les informations sur nos routes à drupal.
 function menu_example_menu() {
 ```
 
-
 ---
 template: menu
 
@@ -414,7 +408,6 @@ template:menu
 
 ---
 template: module
-
 
 ---
 name: hook_theme
@@ -499,7 +492,6 @@ function my_example_preprocess_html( &$variables ) {
   }
 ```
 
-
 ---
 template: preprocess
 
@@ -533,12 +525,10 @@ function my_example_preprocess_node( &$var ) {
     $var['my_variables'] = _my_processing($var['node']);
   }
 }
-
 ```
 
 ---
 template: module
-
 
 ---
 name: variable
@@ -556,7 +546,6 @@ sa valeur.
 ```php
   $variables['googe_analytics_id'] = variable_get('my_ga_id');
 ```
-
 
 ---
 template: variable
@@ -594,7 +583,6 @@ function variable_example_variable_info($options) {
 #   [...]
 *   'group' => 'variable_example',
 ```
-
 
 ---
 template:variable
@@ -884,12 +872,48 @@ regions[header] = Header
 //page.tpl.php
 <?php print render($page['header']); ?>
 ```
-
+---
+template: agenda
 ---
 name: configuration
 ## Configuration
 
 ???
+Un des défits de drupal est la gestion de la configuration. Tout peut se faire
+en passant par l'interface d'administration. De l'ajout de module, à la création
+de liste ou de type de contenu.
+
+Le défit est de pouvoir automatiser cette configuration pour que les modification
+puisse être migré sur toutes les instaces du projet, dev, stage, production et local
+sans avoir à utiliser des dump de base de données.
+
+---
+template: configuration
+
+### Node type
+
+???
+Nous allons commencer par configurer un type de contenu.
+
+Dans la section structure il y as la page de la gestion des types de contenu
+
+Une fois qu'on as donné les information de bases de notre type de contenu on peut
+Le sauvegarder.
+--
+
+![](images/create-content-type.png)
+
+---
+template: configuration
+
+### Fields
+
+???
+Maintenant que notre type de contenu est créé il apparais dans la liste des
+type de contenu de la section structure et on peut ajouter et modifier ses fields.
+--
+
+![](images/edit-field-button.png)
 
 ---
 template:configuration
@@ -899,9 +923,9 @@ template:configuration
 Utilisation du module field collect
 --
 
-
 ---
- ## Export de la configuration par features
+## Export de la configuration par features
+
 ---
 ## Configuration drupal par script automatisés
      fichier.install
