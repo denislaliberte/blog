@@ -75,6 +75,13 @@ $ cd /Users/dl/Sites/drupal-7.34
     --account-name=admin \
     --account-pass=asdf \
     --site-name=drupalini
+://www.youtube.com/watch?v=W3CzgYjlosY--
+template: hook_theme
+
+my-template-name.tpl.php
+```php
+  <h1><?php print $title ?></h1>
+```
 ```
 
 ---
@@ -380,7 +387,7 @@ puisse construire le language switcher.
 ---
 template:menu
 
-### documentation
+### Documentation hook_menu
 
 [ hook_menu | drupal.org ](https://api.drupal.org/api/drupal/modules%21system%21system.api.php/function/hook_menu/7)
 
@@ -393,6 +400,8 @@ template: agenda
 name: hook_theme
 ## hook_theme
 
+--
+### my_example.module
 ???
 Le module theming_example.module démontre différent exemples d'utilisation du 
 hook_theme. Souvent on l'utilise simplement pour créer un template custom dans un 
@@ -404,18 +413,36 @@ On n'as qu'à retourner la clé de notre thème et le nom du fichier template au
 ```php
 function my_example_theme() {
   return [
-    my_theme_key => [
+    'my_theme_key' => [
       'template' => 'my-template-name'
     ]
   ];
 }
 ```
-???
-Puis lorsqu'on utilise cette clé dans la fonction thème ça nous retourne une 
-chaine de caractère contenant le markup du fichier template my-template-name.tpl.php
+
 ---
 template: hook_theme
 
+### template files
+
+???
+Dans notre exemple on déclare un fichier template
+--
+my-template-name.tpl.php
+```php
+  <h1><?php print $title ?></h1>
+```
+---
+template: hook_theme
+
+### theme( $key, $variables )
+???
+Puis lorsqu'on utilise cette clé dans la fonction thème ça nous retourne une 
+chaine de caractère contenant le markup du fichier template my-template-name.tpl.php
+
+Par exemple ici on utilise notre template dans un callback de menu pour l'afficher
+sur une page.
+--
 
 ```php
   function _menu_callback() {
@@ -426,13 +453,6 @@ template: hook_theme
 ???
 Le deuxième argument de la fonciton thème contiens les variables du template
 et les clés seront les noms des variables.
----
-template: hook_theme
-
-my-template-name.tpl.php
-```php
-  <h1><?php print $title ?></h1>
-```
 
 ---
 template: agenda
@@ -441,28 +461,35 @@ template: agenda
 name: preprocess
 
 ## hook_preprocess_hook
+
+--
+### html.tpl.php
 ???
-En déclarant le hook_preprocess_hook un modules peut modifier les variables qu'il
-passe à un template.
+En déclarant le hook_preprocess_hook un modules peut modifier les variables que
+drupal passe à un template.
 
 Comme premier exemple le html.tpl.php est le premier template de drupal, il
-contiens par exemple la balise <head>.
+contiens par exemple la balise <head> ou on aimerais ajouter l'id de Google 
+Analytics
 --
 
-
 ```php
-
 function my_example_preprocess_html( &$variables ) {
     $variables['googe_analytics_id'] = "1234543";
   }
 ```
 
 
-???
-Le template page.tpl.php contiens le layout général du site, les régions, 
-les menus, le header, le footer.
 ---
 template: preprocess
+
+###page.tpl.php
+
+???
+Le template page.tpl.php contiens le layout général du site, les régions, 
+les menus, le header, le footer. Dans cette exemple on définie une nouvelle
+variable $header qui contiens le markup de notre fonction _get_custom_header()
+--
 
 ```php
 function my_example_preprocess_page( &$variables ) {
@@ -473,6 +500,13 @@ function my_example_preprocess_page( &$variables ) {
 ---
 template: preprocess
 
+### node--my_content_type.tpl.php
+
+???
+On as aussi un preprocess pour les templates de nodes et on as le type de contenu
+dans l'array de variable pour agir sur les nodes d'un type de contenu spécifique.
+--
+
 ```php
 function my_example_preprocess_node( &$var ) {
   if ($var['type'] == 'my_content_type'){
@@ -481,12 +515,6 @@ function my_example_preprocess_node( &$var ) {
 }
 
 ```
----
-template: preprocess
-
-[ hook_preprocess_HOOK | drupal.org ](https://api.drupal.org/api/drupal/modules%21system%21theme.api.php/function/hook_preprocess_HOOK/7)
-
-
 
 ---
 template: agenda
@@ -510,25 +538,32 @@ sa valeur.
 ```
 
 
-???
-il y as un module nommé variable qui permet de déclarer des page de configuration 
-dans l'interface administrateur de drupal pour les variables.
 ---
 template: variable
 
-```shell
+### variable.module
+
+???
+il y as un module nommé variable qui permet de déclarer des page de configuration 
+dans l'interface administrateur de drupal pour les variables.
+--
+
+```bash
 $drush dl variable
 Project variable (7.x-2.5) downloaded to sites/all/modules/variable.                                                      [success]
 Project variable contains 6 modules: variable_views, variable_store, variable_realm, variable_example, variable_admin, variable.
 $ cd ~/sites/drupal-7.34/sites/all/modules/variable/variable_example
 ```
 
+---
+template: variable
+
+### hook_variable_info
 ???
 Pour obtenir une page de configuration pour notre variable on premièrement le 
 hook_variable_info pour configurer les métadonnées de notre variable et on 
 l'associe à un groupe de variable.
----
-template: variable
+--
 
 ```php
 //variable_example.variable.inc
@@ -536,19 +571,21 @@ function variable_example_variable_info($options) {
 * $variables['variable_example_text'] = array(
     'type' => 'text',
     'title' => t('Simple text', array(), $options),
-    'default' => 'Example text.',
-    'description' => t('Example of text variable.', array(), $options),
-    'required' => TRUE,
+#   [...]
 *   'group' => 'variable_example',
 ```
 
+
+---
+template:variable
+
+### hook_variable_group_info
 
 ???
 Ensuite on déclare les informations du groupe de variable qu'on vas
 afficher sur notre page de configuration et on l'associe à un 
 path.
----
-template:variable
+--
 
 ```php
 function variable_example_variable_group_info() { 
@@ -559,15 +596,16 @@ function variable_example_variable_group_info() {
 *   'path' => array('admin/config/system/variable/example'),
 ```
 
-???
-Finalement on utilise déclare la route custom pour la page d'administration de 
-notre group de variables.
-
-On ajoute le callback drupal_get_form et l'argument variable_group_form ainsi que 
-le groupe de notre.
 ---
 template:variable
 
+### 
+???
+Finalement on déclare la route custom pour la page d'administration de 
+notre group de variables.
+
+On ajoute le callback drupal_get_form et le groupe de notre variable aux arguments
+de cette route.
 ```php
 //variable_example.module
 function variable_example_menu() {
@@ -580,25 +618,121 @@ function variable_example_menu() {
   );
 ```
 ???
+
 ---
-## Api de contenu
-   EntityFieldQuery
-   Entity api
+template:agenda
+???
+__todo__ transition de hook à api
 ---
-## Création d'un type de content
+name: efq
+## EntityFieldQuery
+
+???
+Les nodes et les users sont des entitées et l'objet EntityFieldQuery permet
+de faire des requêtes qui retourne ces entités.
+--
+### node de type custom_type
+
+```php
+    $query = new \EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle','custom_type')
+      ->propertyCondition('status', 1)
+      ->propertyCondition('language', 'fr');
+```
 ---
-## Utilisation du module field collection
+template:efq
+
+### node_load
+
+```php
+    $queryResult = $query->execute();
+    $nodeArray = isset($queryResult['node'])? $queryResult['node']:array();
+    $nodesId = array_keys($nodeArray);
+    $nodes=  node_load_multiple($nodesId);
+```
+
 ---
-## Gestion des menus
+template: efq
+
+### documentation
+[How to use EntityFieldQuery | drupal.org](https://www.drupal.org/node/1343708)
+
 ---
+name:entity
+
+## Entity Metadata
+
+???
+Le entity metadata wrapper permet de faciliter la manipulation des nodes en php.
+
+Sans le Entity metadata accéder aux valeurs des field est un peu complexe. 
+Il faut utiliser la clé de la langue et celle de l'index, même si c'est
+un champ à valeur unique dans un type de contenu non traduit.
+--
+```php
+  $value = $node->field_number[LANGUAGE_NONE][0]['value'] 
+```
+---
+template: entity
+
+### getter
+???
+Lorsqu'on ajoute le wrapper à une node on peut simplement appeler 
+le getter sur le field et le wrapper d'occupe de la langue courante
+et de nous retourner une valeur unique ou un array selon le cas.
+--
+
+```php
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $value = $wrapper->field_number->value(); 
+```
+---
+template:entity
+### setter
+???
+On as aussi accès à un setter.
+--
+
+```php
+  $node_wrapper->field_number->set(1); 
+```
+---
+template:entity
+
+### property information
+???
+Le wrapper ne contiens aucunes valeurs, pour avoir la liste des fields et autres
+propriétés d'une entity on peux utiliser la méthode getPropertyInfo
+--
+
+```php
+  var_dump($wrapper->getPropertyInfo());
+```
+
 
 ---
 name: theme
 
-###
+## theme
+
+--
+
+### Mothership
+
+???
+Drupal est à la base un projet porté par une communauté de développeur backend.
+On entend rarement des développeurs front end vanter les bon coté du système de
+template de drupal et les critiques sont plus que fréquentes.
+
+L'ambition de mothership est d'offrir des solutions à certaines de ces critiques.
+--
+
+> "If you really like the markup & CSS options that Drupal provides - this theme is probably not for you"
+-[Mothership](https://www.drupal.org/project/mothership)
 
 ---
-name: theme
+template: theme
 
 drush dl mothership
 drush cc all
@@ -627,6 +761,13 @@ Modication de la portion backend
    Menu
 
 
+---
+## Création d'un type de content
+---
+## Utilisation du module field collection
+---
+## Gestion des menus
+---
 Utilisation de git et release cycle
 ## Fonction des différentes branches
 ## Fonction des différents Environnements
