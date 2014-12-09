@@ -2,24 +2,18 @@
 ## slides
 Les slides de la présentation sont disponible à cet url
 
-[bit.ly/drupalini](bit.ly/drupalini)
+bit.ly / drupalini
 
 [initiation-a-drupal.pdf](initiation-a-drupal.pdf)
-
-
 
 ## Agenda
 - Drush
 - Module et hook
-- API
 - theme
 - configuration
 
 
-
-
 ## Drush
-
 
 ### Drupal shell
 
@@ -55,7 +49,6 @@ $ drush site-install standard \
 my-template-name.tpl.php
 ```php
   <h1><?php print $title ?></h1>
-```
 ```
 
 
@@ -115,6 +108,21 @@ Project examples (7.x-1.x-dev) downloaded to sites/all/modules/examples.
 
 [Examples for Developers | drupal.org](https://www.drupal.org/project/examples)
 
+
+
+## Module et hook
+
+- Block
+- Menu
+- Theme
+- Preprocess
+- Variable
+- Query
+- Entity api
+
+Lorsqu'on veux intéragir avec le code de drupal, on utilise le système de hook
+et de module de drupal. Nous allons couvrir quelques hook et api qui sont disponible
+dans les modules.
 ## block_example
 
 Nous allons étudier le module 'block_example' qui démontre comment créer un block custom.
@@ -252,7 +260,6 @@ function menu_example_menu() {
 ```
 
 
-
 example.local/examples/menu_example
 
 Si on veux ajouter la route examples/menu_example à notre projet
@@ -362,7 +369,6 @@ function my_example_preprocess_html( &$variables ) {
 ```
 
 
-
 ###page.tpl.php
 
 Le template page.tpl.php contiens le layout général du site, les régions, 
@@ -386,9 +392,7 @@ function my_example_preprocess_node( &$var ) {
     $var['my_variables'] = _my_processing($var['node']);
   }
 }
-
 ```
-
 
 
 ## Variable
@@ -403,7 +407,6 @@ sa valeur.
 ```php
   $variables['googe_analytics_id'] = variable_get('my_ga_id');
 ```
-
 
 
 ### variable.module
@@ -433,7 +436,6 @@ function variable_example_variable_info($options) {
 #   [...]
    'group' => 'variable_example',
 ```
-
 
 
 ### hook_variable_group_info
@@ -496,6 +498,7 @@ de faire des requêtes qui retourne ces entités.
 
 ### documentation
 [How to use EntityFieldQuery | drupal.org](https://www.drupal.org/node/1343708)
+
 
 
 ## Entity Metadata
@@ -604,7 +607,6 @@ $ cp ../mothership/mothership/templates/page.tpl.php .
 ```
 
 
-
 ### templates folder
 
 Drupal cherche les templates dans le thème de façons récursive, on peut donc
@@ -648,19 +650,47 @@ regions[header] = Header
 //page.tpl.php
 <?php print render($page['header']); ?>
 ```
+## Configuration
 
-## Création d'un type de content
+Un des défits de drupal est la gestion de la configuration. Tout peut se faire
+en passant par l'interface d'administration. De l'ajout de module, à la création
+de liste ou de type de contenu.
 
-Utilisation du module field collection
+Le défit est de pouvoir automatiser cette configuration pour que les modification
+puisse être migré sur toutes les instaces du projet, dev, stage, production et local
+sans avoir à utiliser des dump de base de données.
 
 
+### Node type
+
+Nous allons commencer par configurer un type de contenu.
+
+Dans la section structure il y as la page de la gestion des types de contenu
+
+Une fois qu'on as donné les information de bases de notre type de contenu on peut
+Le sauvegarder.
+
+![](images/create-content-type.png)
+
+
+### Fields
+
+Maintenant que notre type de contenu est créé il apparais dans la liste des
+type de contenu de la section structure et on peut ajouter et modifier ses fields.
+
+![](images/edit-field-button.png)
+
+###Field collection
+
+Utilisation du module field collect
+
+## Export de la configuration par features
 
 ## Configuration drupal par script automatisés
      fichier.install
     hook_update_n
  ## gestion des variables et des modules
  ## gestion des roles et permissions
- ## Export de la configuration par features
  ## Module d'intégration
 
 ## Fonction des différentes branches/environnement
