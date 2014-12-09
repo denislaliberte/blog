@@ -548,20 +548,107 @@ L'ambition de mothership est d'offrir des solutions à certaines de ces critique
 -[Mothership](https://www.drupal.org/project/mothership)
 
 
-drush dl mothership
-drush cc all
+### obtenir mothership
+On peut utiliser le project manager de drupal pour obtenir, et installer 
+un thème.
 
-drush |grep  mothership
+```bash
+$ drush dl mothership
+Project mothership (7.x-2.10) downloaded to sites/all/themes/mothership.
+$ drush en mothership
+The following extensions will be enabled: mothership
+Do you really want to continue? (y/n): y
+mothership was enabled successfully.
+$ drush cc all
+```
+
+### Sous thème
+
+Une fois activé Mothership offre une commande drush qui permet de créer un sous thème.
+
+```bash
+$ drush |grep  mothership
 Other commands: (make,mothership)
  mothership            Create a mothership sub-theme.
- drush mothership test
+$ drush mothership test
  Mothership subtheme "test" created in: /Users/dl/Sites/drupal-7.34/sites/all/themes/test
  Visit your themes settings page and configure it to your liking: http://default/admin/appearance/settings/test
-## Système de région
-    créer une nouvelle région
-   Associer un block à une région
-## Système d'ouverride de template dans drupal
+```
 
+### Override Core template
+
+Les templates sont premièrement défini dans les modules, ils sont overridé
+si un fichier avec le même nom se trouve à l'intérieur du folder du thème.
+
+Par exemple ici on copie le template par défaut de page dans notre thème.
+
+```bash
+$ cd ~/Sites/drupal-7.34/sites/all/themes/test
+$ cp ~/Sites/drupal-7.34/modules/system/page.tpl.php .
+```
+
+
+
+### Template mothership
+Mothership override la plus part des templates du core de drupal, on peut se 
+baser sur ceux ci pour notre override.
+
+Drupal commence par prendre le fichier du thème actif, s'il n'est pas défini, 
+il prend celui défini dans le thème parent et finalement il prend celui par 
+défaut défini dans le module.
+
+```bash
+$ cp ../mothership/mothership/templates/page.tpl.php .
+```
+
+
+
+### templates folder
+
+Drupal cherche les templates dans le thème de façons récursive, on peut donc
+avoir une hiéarchie de dossier pour organiser ces templates.
+
+```bash
+$ mkdir templates
+$ mv page.tpl.php templates
+```
+
+
+### node
+
+On peut déclarer des template différent pour chaque type de node. Il suffit 
+d'ajouter le machine name du type de contenu après la node.
+
+```bash
+$ cp ../mothership/mothership/templates/node.tpl.php \
+
+```
+
+
+![](images/regions.jpg)
+
+Drupal définie des régions dans les quels on peut afficher les blocks. Ici
+on voie les région par défaut.
+
+
+### region
+
+On peux définir une région custom en ajoutant le machine name dans le fichier de
+configuration de notre thème test.info et en appelant la fonction render() sur
+la région qui est ajouté aux variables $page à l'intérieur du page.tpl.php
+
+```ini
+;test.info
+regions[header] = Header
+```
+
+```php
+//page.tpl.php
+<?php print render($page['header']); ?>
+```
+
+## Création d'un type de content
+## Utilisation du module field collection
 
 Modication de la portion backend
 ## Gestions des librairies et autoloader (composer)
@@ -573,10 +660,8 @@ Modication de la portion backend
    Menu
 
 
-## Création d'un type de content
-## Utilisation du module field collection
 ## Gestion des menus
-Utilisation de git et release cycle
+
 ## Fonction des différentes branches
 ## Fonction des différents Environnements
 ## Déploiement du code et mise à jours de la configuration
