@@ -1,9 +1,9 @@
 class: center, middle
 # Initiation a Drupal
 ---
-## slides
+## Présentation
 ???
-Les slides de la présentation sont disponible à cet url
+La présentation est disponible à cet url.
 --
 
 [bit.ly / drupalini](http://bit.ly/drupalini)
@@ -17,9 +17,6 @@ name: agenda
 - Module et hook
 - theme
 - configuration
-
-???
-__todo__ ajuster l'agenda
 
 ---
 name: drush
@@ -41,9 +38,8 @@ template: drush
 ### Project manager
 
 ???
-Drush contiens un projet manager, qui peut télécharger et mettre à jours le core
-de drupal, les thèmes et les modules.
-
+Drush contient un gestionnaire de projet, qui peut télécharger et faire les mise à jour
+du core de drupal, des thèmes et des modules.
 --
 
 ```bash
@@ -59,8 +55,7 @@ template:drush
 
 ???
 Drush permet d'installer drupal, ce qui créé ou écrase la base de données et les 
-fichier de configuration.
-
+fichiers de configuration.
 --
 
 ```bash
@@ -70,12 +65,6 @@ $ cd /Users/dl/Sites/drupal-7.34
     --account-name=admin \
     --account-pass=asdf \
     --site-name=drupalini
-://www.youtube.com/watch?v=W3CzgYjlosY--
-template: hook_theme
-
-my-template-name.tpl.php
-```php
-  <h1><?php print $title ?></h1>
 ```
 
 ---
@@ -84,9 +73,8 @@ template:drush
 ### Mise à jours
 
 ???
-On peut faire les mises à jour du code des modules et du core ainsi que la base 
+On peut faire les mises à jour du code des modules et du core ainsi que la base
 de données par drush.
-
 --
 
 ```bash
@@ -115,12 +103,11 @@ site_name was set to "new-name".
 
 ---
 template: drush
-### script
+### Script
 
 ???
-On peut utiliser drush pour executer des scripts php ce qui est pratique pour 
+On peut utiliser drush pour executer des scripts PHP ce qui est pratique pour
 explorer l'api.
-
 --
 
 ```bash
@@ -142,7 +129,6 @@ On peut aussi gérer les téléchargements, installations et mise à jour des mo
 
 Avec la commande suivante on télécharge le projet example de drupal. Ce sont des
 exemples de module pour apprendre à travailler avec les api backend de drupal.
-
 --
 
 ```bash
@@ -1048,38 +1034,210 @@ template: configuration
 ### example.install
 
 ???
+Les fichier install sont utilisé pour les script de mise à jours des modules.
 
+On déclare une série de hook_update_n qui sont excuté dans l'ordre et une seul
+sur chaque installation lorsqu'on exécute la commande `drush updb`.
 --
 
 ```php
-
-
+/**
+ * Cet update imprime la chaine de caractère "hello world".
+ */
+function examples_update_3() {
+  print PHP_EOL . "hello world" . PHP_EOL;
+}
 ```
 
 ---
-## Configuration drupal par script automatisés
-     fichier.install
-    hook_update_n
----
- ## gestion des variables et des modules
----
- ## gestion des roles et permissions
----
- ## Module d'intégration
+template: configuration
+
+???
+Lorsqu'on exécute la commande drush 'updb' on peut exécuter les nouveaux
+hook d'update.
+--
+
+```bash
+$ drush cc all
+*$ drush updb
+ Examples  3  Cet update imprime la chaine de caractère "hello world".
+ Do you wish to run all pending updates? (y/n): y
+* hello world
+ Performed update: examples_update_3
+ 'all' cache was cleared.
+ Finished performing updates.
+```
 
 ---
-## Fonction des différentes branches/environnement
----
-## Gestions des librairies et autoloader (composer)
----
-## Exemples de code et test automatisé (phpspec)
----
-## Traitement des variables des éléments de conteu
-    Drupal adapter
---
-   Arrays functions
---
-    Fields functions
---
-   Menu
+template: configuration
 
+### Modules
+
+???
+On utilise les hook_update_n pour activer ou désactiver des modules.
+--
+
+```php
+/**
+ * Enable Entity module and desable examples_block.
+ */
+function examples_update_4() {
+  module_enable(['Entity']);
+  module_disable([examples_block]);
+}
+```
+
+---
+template: configuration
+
+### variables
+
+???
+On peut aussi configurer des variables
+--
+
+```php
+/**
+ * Enable the adminimal administration theme.
+ */
+function examples_update_5() {
+  variable_set('admin_theme', 'adminimal');
+}
+```
+
+
+---
+template: configuration
+
+### permission
+
+???
+On peut aussi gérer les permissions à partir des scripts d'update.
+--
+
+```php
+/**
+ * Add administer permission to webmestre role.
+ */
+function examples_update_6() {
+  $role = user_role_load_by_name('webmestre');
+  if ($role) {
+    user_role_change_permissions($role->rid, "administer permissions");
+  }
+}
+```
+
+---
+template: configuration
+
+### project_integration.info
+
+???
+Chaque fonctionnalité du site est développé dans un module séparé avec son propre
+fichier .install et ses dépendances et on ajoute un module d'intégration qui est
+responsable d'installer le projet et qui dépend des autres modules.
+--
+
+```ini
+dependencies[] = project_layout
+dependencies[] = project_article
+dependencies[] = project_homepage
+```
+
+---
+name: varia
+### varia
+
+--
+
+### Composer
+
+[Présentation ](http://denislaliberte.github.io/slides/composer)
+
+???
+Dans cette autre présentation on as une introduction à composer qu'on peut utiliser
+dans drupal en incluant l'autoloader dans un module.
+--
+
+```php
+module_load_include('php','example','vendor/autoload');
+```
+
+---
+template: varia
+
+### git
+Fonction des différentes branches/environnement
+
+---
+template: varia
+
+### phpspec
+
+???
+Inspiré par le specBDD, phpspec est une implémentation de rspec en php.
+L'idée c'est de faire des exemples de code exécutable qui servent de 
+documentation et de tests.
+
+On instale phpspec en l'ajoutant au manifeste de composer.
+--
+
+```json
+  "require-dev": {
+    "phpspec/phpspec": "2.0.1",
+```
+
+---
+template: varia
+
+### ArraysSpec.php
+
+```php
+    function it_get_first_value_of_a_column() {
+      $input = [
+        ['foo' => ['bar','baz'] ],
+        ['foo' => ['a','b','c'] ]
+        ];
+      self::getColumnHead($input,'foo')
+*        ->shouldReturn(['bar','a']);
+    }
+```
+
+---
+template: varia
+
+### phpspec
+
+```bash
+*$ bin/phpspec run
+100%                        21
+2 specs
+21 examples (21 passed)
+369ms
+```
+
+---
+template: varia
+
+### api wrapper
+
+???
+Étant donné que l'api de drupal est consituté magoritairement de fonction dans le
+namespace global, il est difficile de découpler notre code et nos tests de drupal.
+
+Pour faciliter les choses nous avons créé une librairie wrapper qui englobe les
+fonction de l'api
+--
+
+```php
+function it_add_image_url($drupal) {
+  $drupal->getImageUrl('public://test.png')
+*    ->willReturn('http://example.com/path/to/test.png');
+  $array = [
+    'field_image' =>['uri'=>'public://test.png'],
+    'irrelevant_field'=>"asdf"
+    ];
+  self::addImageUrl($array,['field_image'],$drupal)
+    ->shouldHaveValueInString(['field_image','url'],'http://example.com/path/to/test.png');
+}
+```
