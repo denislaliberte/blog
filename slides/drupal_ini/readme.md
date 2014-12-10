@@ -730,7 +730,62 @@ field-collection dans la section structure.
 
 ![](images/field-collection.png)
 
-## Export de la configuration par features
+### Features
+
+Features est un outils pour exporter la configuration de drupal. Il est
+possible de tout exporter la configuration d'un projet avec drupal.
+
+Exporter/importer de la configuration peut avoir des conséquence innatendue.
+Nous avons découvert qu'il est plus stable et flexible de limitter ce qu'on
+exporte à ce qui ne peux pas être scripté rapidement.
+
+Par exemple on l'utilise pour la configuration des type de contenu et fields
+mais on préfère configurer les variables et les rôles en php.
+
+```bash
+$ drush dl features
+ Project features (7.x-2.2) downloaded to sites/all/modules/features.
+$ drush en -y features
+ The following extensions will be enabled: features
+ Do you really want to continue? (y/n): y
+ features was enabled successfully.
+ features defines the following permissions: administer features, manage features, generate features, rename features
+```
+
+![](images/create-features.png)
+Features ajoute une interface dans la section 'structure' de l'interface 
+d'administration de drupal.
+
+On peut sélectionner des éléments dans l'interface et télécharger un module qui
+contiens la configuration de ce qu'on as sélectionné.
+
+
+Une fois que la features est exporté on peux utiliser les commandes drush de
+features pour inspecter cette feature, la mettre à jours ou faire un revert.
+
+```bash
+drush | grep features
+All commands in features: (features)
+ features-add (fa)     Add a component to a feature module. (DEPRECATED: use features-export)
+ features-components   List features components.
+features-diff (fd)    Show the difference between the default and overridden state of a feature.
+ features-export (fe)  Export a feature from your site into a module.
+ features-list (fl,    List all the available features for your site.
+               features)
+features-revert (fr)  Revert a feature module on your site.
+ features-revert-all   Revert all enabled feature module on your site.
+ features-update (fu)  Update a feature module on your site.
+ features-update-all   Update all feature modules on your site.
+```
+
+### example.install
+
+
+
+```php
+
+
+```
 
 ## Configuration drupal par script automatisés
      fichier.install
