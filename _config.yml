@@ -1,5 +1,5 @@
 markdown: rdiscount
-permalink: /blog/posts/:title
+permalink: /posts/:title
 rdiscount:
   extensions: [smart]
 
@@ -7,6 +7,6 @@ gems:
   - jekyll-sitemap
 
 name: Denis Laliberté
-url: http://denislaliberte.github.io
+url: http://denislaliberte.github.io/blog
 description: todo description
 twitter: denislaliberte
